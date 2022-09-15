@@ -49,16 +49,15 @@
     <ConstraintSet android:id="@+id/end">
         <Constraint
             android:id="@+id/vertical_motion"
-            android:layout_width="1dp"
+            android:layout_width="40dp"
             android:layout_height="100dp"
             android:background="@drawable/vertical_corners"
-            android:elevation="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_editor_absoluteY="96dp" />
+            android:elevation="1dp"
+            app:layout_constraintEnd_toStartOf="parent" />
 
         <Constraint
             android:id="@+id/item_bg_recycle"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:layout_marginStart="40dp"
             android:visibility="invisible"
