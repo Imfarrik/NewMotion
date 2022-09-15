@@ -3,44 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetEnd="@+id/end"
+        app:constraintSetEnd="@id/endScrolling"
+        app:constraintSetStart="@+id/start"
+        app:duration="500">
+        <OnSwipe
+            app:dragDirection="dragLeft"
+            app:touchAnchorId="@+id/item_bg_recycle" />
+    </Transition>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
         app:constraintSetStart="@+id/start"
         app:duration="500">
         <OnSwipe
             app:dragDirection="dragUp"
-            app:touchAnchorId="@id/item_bg_recycle"
+            app:touchAnchorId="@id/scrollView"
             app:touchAnchorSide="top" />
     </Transition>
 
     <ConstraintSet android:id="@+id/start">
 
         <Constraint
-            android:id="@+id/vertical_motion"
-            android:layout_width="40dp"
-            android:layout_height="100dp"
-            android:elevation="1dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balance" />
-        <Constraint
-            android:id="@+id/card_view_test"
+            android:id="@+id/item_bg_recycle"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginStart="10dp"
             app:layout_constraintEnd_toEndOf="@+id/space"
             app:layout_constraintStart_toEndOf="@+id/vertical_motion"
             app:layout_constraintTop_toBottomOf="@+id/balance" />
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/endScrolling">
+
         <Constraint
             android:id="@+id/item_bg_recycle"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toEndOf="@+id/space"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/space" />
+            app:layout_constraintTop_toBottomOf="@+id/balance" />
+
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
-
         <Constraint
             android:id="@+id/vertical_motion"
             android:layout_width="1dp"
@@ -51,19 +57,18 @@
             app:layout_editor_absoluteY="96dp" />
 
         <Constraint
-            android:id="@+id/card_view_test"
+            android:id="@+id/item_bg_recycle"
+            android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/vertical_motion"
+            app:layout_constraintStart_toStartOf="@+id/space"
             app:layout_constraintTop_toBottomOf="@+id/balance"
-            app:transitionEasing="standard">
-
-        </Constraint>
+            app:transitionEasing="standard" />
 
         <Constraint
-            android:id="@+id/item_bg_recycle"
+            android:id="@+id/scrollView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="0dp"
@@ -73,9 +78,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/balance">
-
-        </Constraint>
+            app:layout_constraintTop_toBottomOf="@+id/balance" />
 
     </ConstraintSet>
+
+
 </MotionScene>

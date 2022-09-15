@@ -5,22 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
-    app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    app:layoutDescription="@xml/activity_main_scene">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/bg_white_main"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/space">
+    </ScrollView>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_bg_recycle"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/bg_white_main"
-        android:paddingTop="50dp"
-        android:paddingStart="20dp"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/space" />
+        app:layout_constraintTop_toBottomOf="@+id/balance" />
 
     <TextView
         android:id="@+id/balance"
@@ -40,6 +46,8 @@
         android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,66 +59,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_view2"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:rotation="-90"
+            android:text="Add\ncard!"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/card_view_test"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="10dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="@+id/space"
-        app:layout_constraintStart_toEndOf="@+id/vertical_motion"
-        app:layout_constraintTop_toBottomOf="@+id/balance">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="26dp"
+            android:layout_height="31dp"
+            android:contentDescription="@string/app_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/card_view_test1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp">
-
-                <View
-                    android:id="@+id/viewOne"
-                    android:layout_width="178dp"
-                    android:layout_height="92dp"
-                    android:background="@drawable/rectangle_5"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/viewSecond"
-                    android:layout_width="178dp"
-                    android:layout_height="92dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/rectangle_5"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/viewOne"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/viewThird"
-                    android:layout_width="178dp"
-                    android:layout_height="92dp"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/rectangle_5"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/viewSecond"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </HorizontalScrollView>
-
+            app:layout_constraintTop_toBottomOf="@+id/text_view2"
+            app:srcCompat="@drawable/ic_res" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
 
