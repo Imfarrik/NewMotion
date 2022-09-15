@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
+import com.example.myapplicationnewmotion.fragments.BottomButtonFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,5 +18,9 @@ class MainActivity : AppCompatActivity() {
         binding.itemBgRecycle.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.itemBgRecycle.adapter = myAdapter
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.bottom_buttons, BottomButtonFragment.newInstance())
+            .commit()
     }
 }
