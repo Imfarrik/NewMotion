@@ -5,9 +5,10 @@
       <map>
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/drawable/bg_humo_small.xml" value="0.2295" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/drawable/bg_white_main.xml" value="0.2295" />
+        <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/drawable/ic_humo.xml" value="0.2295" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/drawable/main_bg.xml" value="0.111" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/drawable/vertical_corners.xml" value="0.2295" />
-        <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/layout/new_recycle.xml" value="0.264" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/layout/recycle_item.xml" value="0.264" />
         <entry key="..\:/Users/MyApplicationnewmotion/app/src/main/res/layout/test.xml" value="0.1" />
