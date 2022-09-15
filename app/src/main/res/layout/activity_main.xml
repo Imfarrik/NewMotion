@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:rotation="-90"
-            android:text="Add\ncard!"
+            android:text="Добавить\nкарту"
             android:textColor="@color/black"
             android:textSize="10sp"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
