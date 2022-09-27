@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
-import com.example.myapplicationnewmotion.fragments.BottomButtonFragment
-import com.example.myapplicationnewmotion.fragments.MainFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -19,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         val a = findNavController(R.id.fragmentContainerView)
 
         b.setupWithNavController(a)
+
+        binding.bottomNavigationView.background = null
+
+
 
     }
 }

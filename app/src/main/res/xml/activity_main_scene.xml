@@ -9,7 +9,7 @@
         <OnSwipe
             app:dragDirection="dragLeft"
             app:touchAnchorId="@+id/item_bg_recycle"
-            app:touchAnchorSide="left"/>
+            app:touchAnchorSide="left" />
     </Transition>
 
     <Transition
