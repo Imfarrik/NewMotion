@@ -24,29 +24,31 @@ class BottomButtonFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.transactionBtnBg.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.mainActivity, TransactionsFragment.newInstance())
-                .commitNow()
-        }
 
-        binding.homeBtnBg.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.mainActivity, MainFragment.newInstance())
-                .commitNow()
-        }
 
-        binding.payBtnBg.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.mainActivity, PayFragment.newInstance())
-                .commitNow()
-        }
-
-        binding.settingsBtnBg.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .add(R.id.mainActivity, SettingsFragment.newInstance())
-                .commitNow()
-        }
+//        binding.transactionBtnBg.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .add(R.id.mainActivity, TransactionsFragment.newInstance())
+//                .commitNow()
+//        }
+//
+//        binding.homeBtnBg.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.mainActivity, MainFragment.newInstance())
+//                .commitNow()
+//        }
+//
+//        binding.payBtnBg.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .add(R.id.mainActivity, PayFragment.newInstance())
+//                .commitNow()
+//        }
+//
+//        binding.settingsBtnBg.setOnClickListener {
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .add(R.id.mainActivity, SettingsFragment.newInstance())
+//                .commitNow()
+//        }
 
     }
 

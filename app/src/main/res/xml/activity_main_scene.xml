@@ -8,7 +8,8 @@
         app:duration="500">
         <OnSwipe
             app:dragDirection="dragLeft"
-            app:touchAnchorId="@+id/item_bg_recycle" />
+            app:touchAnchorId="@+id/item_bg_recycle"
+            app:touchAnchorSide="left"/>
     </Transition>
 
     <Transition

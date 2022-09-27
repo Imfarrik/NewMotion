@@ -2,9 +2,12 @@ package com.example.myapplicationnewmotion
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
 import com.example.myapplicationnewmotion.fragments.BottomButtonFragment
 import com.example.myapplicationnewmotion.fragments.MainFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,12 +15,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainActivity, MainFragment.newInstance())
-            .commit()
+        val b = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        val a = findNavController(R.id.fragmentContainerView)
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.bottom_buttons, BottomButtonFragment.newInstance())
-            .commitNow()
+        b.setupWithNavController(a)
+
     }
 }

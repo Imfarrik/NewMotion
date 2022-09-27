@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Главная" />
+    <item
+        android:id="@+id/payFragment"
+        android:icon="@drawable/ic_pay"
+        android:title="Платежи" />
+    <item
+        android:id="@+id/transactionsFragment"
+        android:icon="@drawable/ic_transfer"
+        android:title="Переводы" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="Настройки" />
+</menu>
