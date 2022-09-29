@@ -20,15 +20,53 @@
 
     </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/item_bg_recycle"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/test"
         android:layout_width="0dp"
         android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:scrollIndicators="bottom"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balance" />
+        app:layout_constraintTop_toBottomOf="@+id/balance">
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:id="@+id/test1"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            app:layoutDescription="@xml/fragment_main_scene"
+            app:layout_constraintEnd_toEndOf="@id/test"
+            app:layout_constraintStart_toStartOf="@id/test"
+            app:layout_constraintTop_toTopOf="@id/test">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/item_bg_recycle"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="40dp"
+                android:orientation="horizontal"
+                android:scrollIndicators="bottom"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="@id/test1"
+                app:layout_constraintStart_toStartOf="@id/test1"
+                app:layout_constraintTop_toTopOf="@id/test1" />
+
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/item_bg_recycle"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="100dp"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        android:scrollIndicators="bottom"-->
+    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/balance" />-->
 
     <TextView
         android:id="@+id/balance"
