@@ -182,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/transporent_bg"
-            app:menu="@menu/mwnu_item"
+            app:menu="@menu/menu_item"
             />
     </com.google.android.material.bottomappbar.BottomAppBar>
 

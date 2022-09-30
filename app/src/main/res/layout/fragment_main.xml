@@ -25,6 +25,7 @@
         android:id="@+id/test"
         android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance">
@@ -58,27 +59,39 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/item_bg_recycle"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="100dp"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:scrollIndicators="bottom"-->
-    <!--        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/balance" />-->
+    <TextView
+        android:id="@+id/text_next_to_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tt_norms_pro_thin"
+        android:text="UZS"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/balance"
+        app:layout_constraintStart_toEndOf="@id/balance" />
+
+    <TextView
+        android:id="@+id/text_under_balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:fontFamily="@font/tt_norms_pro_bold"
+        android:text="Общий баланс в UZS"
+        android:textColor="#80FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/balance"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="64dp"
-        android:fontFamily="sans-serif-black"
-        android:text="10 000 000 uzs"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/tt_norms_pro_bold"
+        android:text="@string/balance"
+        android:textAppearance="@style/uzs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,6 +99,7 @@
         android:id="@+id/space"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/balance" />
@@ -94,6 +108,7 @@
         android:id="@+id/vertical_motion"
         android:layout_width="40dp"
         android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/vertical_corners"
         android:elevation="1dp"
         app:layout_constraintStart_toStartOf="parent"
