@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mainFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Главная"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/payFragment"
+        android:icon="@drawable/ic_pay"
+        android:title="Платежи"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/holder"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/transactionsFragment"
+        android:icon="@drawable/ic_transfer"
+        android:title="Переводы"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="Настройки"
+        app:showAsAction="ifRoom" />
+</menu>

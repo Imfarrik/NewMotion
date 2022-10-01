@@ -1,13 +1,11 @@
 package com.example.myapplicationnewmotion
 
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         val bottomNavigationView = binding.bottomNavigationView
-        val a = findNavController(R.id.fragmentContainerView)
+        val navController = findNavController(R.id.fragmentContainerView)
 
         bottomNavigationView.background = null
 
@@ -32,22 +30,22 @@ class MainActivity : AppCompatActivity() {
             .setExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
             .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
             .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setPopUpTo(a.graph.startDestinationId, false)
+            .setPopUpTo(navController.graph.startDestinationId, false)
             .build()
 
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mainFragment -> {
-                    a.navigate(R.id.mainFragment, null, options)
+                    navController.navigate(R.id.mainFragment, null, options)
                 }
                 R.id.transactionsFragment -> {
-                    a.navigate(R.id.transactionsFragment, null, options)
+                    navController.navigate(R.id.transactionsFragment, null, options)
                 }
                 R.id.payFragment -> {
-                    a.navigate(R.id.payFragment, null, options)
+                    navController.navigate(R.id.payFragment, null, options)
                 }
                 R.id.settingsFragment -> {
-                    a.navigate(R.id.settingsFragment, null, options)
+                    navController.navigate(R.id.settingsFragment, null, options)
                 }
             }
             true
