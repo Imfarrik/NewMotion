@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyApplicationNewMotion" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.MyApplicationNewMotion" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -10,14 +10,27 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >@color/transparent</item>
+        <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowFullscreen">false</item>
         <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-
-
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/purple_500
+        </item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/main_bg
+        </item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">2000</item>
+        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/ic_logo
+        </item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">
+            @color/white
+        </item>
+    </style>
+    <style name="Theme.MyApplicationNewMotion.Launcher">
+        <item name="android:windowBackground">@drawable/launcher_screen</item>
+        <item name="android:navigationBarColor">@color/purple_500</item>
     </style>
 </resources>
