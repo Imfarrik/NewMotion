@@ -11,6 +11,10 @@ class LauncherActivity : AppCompatActivity() {
 
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
 
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }

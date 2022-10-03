@@ -18,16 +18,16 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/purple_500
-        </item>
-        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/main_bg
-        </item>
-        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">2000</item>
-        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/ic_logo
-        </item>
-        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">
-            @color/white
-        </item>
+<!--        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@color/purple_500-->
+<!--        </item>-->
+<!--        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/main_bg-->
+<!--        </item>-->
+<!--        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">2000</item>-->
+<!--        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/ic_logo-->
+<!--        </item>-->
+<!--        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">-->
+<!--            @color/white-->
+<!--        </item>-->
     </style>
     <style name="Theme.MyApplicationNewMotion.Launcher">
         <item name="android:windowBackground">@drawable/launcher_screen</item>
