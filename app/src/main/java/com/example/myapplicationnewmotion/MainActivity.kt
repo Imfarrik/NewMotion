@@ -1,5 +1,6 @@
 package com.example.myapplicationnewmotion
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -27,9 +28,9 @@ class MainActivity : AppCompatActivity() {
         val options = NavOptions.Builder()
             .setLaunchSingleTop(true)
             .setEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+            .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
             .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+            .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_out_bottom)
             .setPopUpTo(navController.graph.startDestinationId, false)
             .build()
 
@@ -55,8 +56,24 @@ class MainActivity : AppCompatActivity() {
             return@setOnNavigationItemReselectedListener
         }
 
-
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val bottomNavigationViewSelectItem = binding.bottomNavigationView.selectedItemId
+
+        if (R.id.mainFragment != bottomNavigationViewSelectItem) {
+            setHomeItem()
+        }
+    }
+
+    private fun setHomeItem() {
+        val bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.selectedItemId = R.id.mainFragment
+    }
+}
+
 
 //    private fun completelyTransparentStatusBar() {
 //        val w = window
@@ -67,4 +84,3 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 
-}
