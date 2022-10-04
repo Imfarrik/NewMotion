@@ -1,6 +1,5 @@
 package com.example.myapplicationnewmotion
 
-import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             .setPopUpTo(navController.graph.startDestinationId, false)
             .build()
 
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+        bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mainFragment -> {
                     navController.navigate(R.id.mainFragment, null, options)
@@ -52,8 +51,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        bottomNavigationView.setOnNavigationItemReselectedListener {
-            return@setOnNavigationItemReselectedListener
+        bottomNavigationView.setOnItemReselectedListener {
+            return@setOnItemReselectedListener
         }
 
     }

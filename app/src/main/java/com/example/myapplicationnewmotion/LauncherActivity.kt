@@ -28,13 +28,13 @@ class LauncherActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         Log.d(TAG, "onPause")
-        finish()
+//        finish()
     }
 
     override fun onStop() {
         super.onStop()
         Log.d(TAG, "onStop")
-//        finish()
+        finish()
     }
 
     override fun onDestroy() {
