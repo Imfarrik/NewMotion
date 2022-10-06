@@ -15,25 +15,26 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        setContentView(binding.root)
 
         val bottomNavigationView = binding.bottomNavigationView
         val navController = findNavController(R.id.fragmentContainerView)
+        navController.setGraph(R.navigation.bottom_nav)
 
         bottomNavigationView.background = null
+        bottomNavigationView.itemRippleColor = null
 
         val options = NavOptions.Builder()
             .setLaunchSingleTop(true)
             .setEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+            .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
             .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+            .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_out_bottom)
             .setPopUpTo(navController.graph.startDestinationId, false)
             .build()
 
-        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+        bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mainFragment -> {
                     navController.navigate(R.id.mainFragment, null, options)
@@ -51,12 +52,29 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        bottomNavigationView.setOnNavigationItemReselectedListener {
-            return@setOnNavigationItemReselectedListener
+        bottomNavigationView.setOnItemReselectedListener {
+            return@setOnItemReselectedListener
         }
 
-
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+        val bottomNavigationViewSelectItem = binding.bottomNavigationView.selectedItemId
+
+        if (R.id.mainFragment != bottomNavigationViewSelectItem) {
+            setHomeItem()
+
+        }
+    }
+
+    private fun setHomeItem() {
+        val bottomNavigationView = binding.bottomNavigationView
+        bottomNavigationView.selectedItemId = R.id.mainFragment
+    }
+}
+
 
 //    private fun completelyTransparentStatusBar() {
 //        val w = window
@@ -67,4 +85,3 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 
-}
