@@ -65,7 +65,10 @@ class MainActivity : AppCompatActivity() {
 
         if (R.id.mainFragment != bottomNavigationViewSelectItem) {
             setHomeItem()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4063d65dd6c98ccbb525197fa9b692861a21ff10
         }
     }
 

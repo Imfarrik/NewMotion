@@ -9,11 +9,15 @@
         android:id="@+id/mainFragment"
         android:name="com.example.myapplicationnewmotion.fragments.MainFragment"
         android:label="fragment_main"
+<<<<<<< HEAD
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/mainFragmentToCardInfoFragment"
             app:destination="@id/cardHolderActivity" />
     </fragment>
+=======
+        tools:layout="@layout/fragment_main" />
+>>>>>>> 4063d65dd6c98ccbb525197fa9b692861a21ff10
     <fragment
         android:id="@+id/transactionsFragment"
         android:name="com.example.myapplicationnewmotion.fragments.TransactionsFragment"
