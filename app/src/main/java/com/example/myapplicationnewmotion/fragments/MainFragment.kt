@@ -48,12 +48,12 @@ class MainFragment : Fragment() {
 
         cardTestAdapter = AdapterTest(cardList)
         recyclerView.adapter = cardTestAdapter
-        Log.i("myTag", "$cardList")
 
         cardTestAdapter.onItemClick = {
 
             val cardData = Gson().toJson(it)
             val bundle = bundleOf("myArg" to cardData)
+            Log.i("myTog", cardData)
 
             MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
                 findNavController().navigate(
@@ -66,6 +66,7 @@ class MainFragment : Fragment() {
         binding.buttonCards.setOnClickListener {
             val cardsData = Gson().toJson(cardList)
             val shareBundle = bundleOf("cardsData" to cardsData)
+            Log.i("myTog", cardsData)
 
             MainFragmentDirections.mainFragmentToCardsFragment().let {
                 findNavController().navigate(it.actionId, shareBundle)

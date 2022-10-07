@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
@@ -14,6 +17,10 @@ import com.google.gson.reflect.TypeToken
 
 
 class CardsFragment : Fragment() {
+
+    private lateinit var myAdapter: AdapterCardInfo
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var convertedList: ArrayList<DataCardInfo>
 
     private lateinit var binding: FragmentCardsBinding
 
@@ -28,17 +35,29 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recycleItemCards.layoutManager =
+        recyclerView = binding.recycleItemCards
+
+        recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         val bundle = arguments?.getString("cardsData")
-
         val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
-        val converter: ArrayList<DataCardInfo> = Gson().fromJson(bundle, listType)
+        convertedList = Gson().fromJson(bundle, listType)
 
-        val myAdapter = AdapterCardInfo(converter)
+        myAdapter = AdapterCardInfo(convertedList)
 
-        binding.recycleItemCards.adapter = myAdapter
+        recyclerView.adapter = myAdapter
+
+        myAdapter.onItemClick = {
+            val a = Gson().toJson(it)
+            val b = bundleOf("myArg" to a)
+            CardsFragmentDirections.cardsFragmentToContainerActivity3().let { that ->
+                findNavController().navigate(
+                    that.actionId,
+                    b
+                )
+            }
+        }
 
         binding.backButtonCardsFragment.setOnClickListener {
             requireActivity().onBackPressed()

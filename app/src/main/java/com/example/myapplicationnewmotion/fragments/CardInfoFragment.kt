@@ -1,6 +1,7 @@
 package com.example.myapplicationnewmotion.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,14 +40,11 @@ class CardInfoFragment : Fragment() {
         binding.itemCardInfo.adapter = myAdapter
 
         binding.backButton.setOnClickListener {
-            onBackPressed()
+            requireActivity().onBackPressed()
         }
 
     }
 
-        private fun onBackPressed() {
-        requireActivity().onBackPressed()
-    }
 
     companion object {
         @JvmStatic

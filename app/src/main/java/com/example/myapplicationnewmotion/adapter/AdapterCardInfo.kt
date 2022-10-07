@@ -10,6 +10,8 @@ class AdapterCardInfo(
     private val value: ArrayList<DataCardInfo>
 ) : RecyclerView.Adapter<AdapterCardInfo.MyViewHolder>() {
 
+    var onItemClick: ((DataCardInfo) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
         val binding = RecycleItemCardInfoBinding.inflate(LayoutInflater.from(parent.context))
@@ -21,6 +23,10 @@ class AdapterCardInfo(
         val item = value[position]
         holder.balance.text = item.cardBalance
         holder.disc.text = item.cardDescription
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(item)
+        }
     }
 
     override fun getItemCount(): Int = value.size

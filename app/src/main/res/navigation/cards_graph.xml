@@ -10,9 +10,23 @@
         android:name="com.example.myapplicationnewmotion.fragments.CardsFragment"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_cards">
+        <action
+            android:id="@+id/cardsFragmentToContainerActivity3"
+            app:destination="@+id/cardHolderActivity2" />
         <argument
             android:name="cardsData"
             android:defaultValue="Hey!"
             app:argType="string" />
     </fragment>
+    <activity
+        android:id="@+id/cardHolderActivity2"
+        android:name="com.example.myapplicationnewmotion.activities.CardHolderActivity"
+        android:label="activity_card_holder"
+        tools:layout="@layout/activity_card_holder">
+        <argument
+            android:name="myArg"
+            android:defaultValue="hey"
+            app:argType="string" />
+    </activity>
+
 </navigation>
