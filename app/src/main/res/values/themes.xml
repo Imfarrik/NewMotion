@@ -32,7 +32,6 @@
     <style name="Theme.MyApplicationNewMotion.Launcher">
         <item name="android:windowBackground">@drawable/launcher_screen</item>
         <item name="android:navigationBarColor">@color/purple_500</item>
-<<<<<<< HEAD
     </style>
     <style name="Theme.MyApplicationNewMotion.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -40,7 +39,12 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">#26263C</item>
         <item name="android:navigationBarColor">#fff2f4f8</item>
-=======
->>>>>>> 4063d65dd6c98ccbb525197fa9b692861a21ff10
+    </style>
+    <style name="Theme.MyApplicationNewMotion.CardsContainer">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/purple_500</item>
+        <item name="android:navigationBarColor">#fff2f4f8</item>
     </style>
 </resources>

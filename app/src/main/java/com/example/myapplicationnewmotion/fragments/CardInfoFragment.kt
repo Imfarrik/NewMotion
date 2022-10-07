@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
+import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardInfoBinding
+import com.google.gson.Gson
 
 class CardInfoFragment : Fragment() {
 
@@ -21,20 +23,29 @@ class CardInfoFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val bundle = arguments?.getString("myArg")
-
-        val item: List<String> = listOf("$bundle")
-
-        val myAdapter = AdapterCardInfo(item)
-
         binding.itemCardInfo.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+
+        val bundle = arguments?.getString("myArg")
+        val converter = Gson().fromJson(bundle, DataCardInfo::class.java)
+        val some = arrayListOf(converter)
+
+        val myAdapter = AdapterCardInfo(some)
+
         binding.itemCardInfo.adapter = myAdapter
 
+        binding.backButton.setOnClickListener {
+            onBackPressed()
+        }
 
+    }
+
+        private fun onBackPressed() {
+        requireActivity().onBackPressed()
     }
 
     companion object {

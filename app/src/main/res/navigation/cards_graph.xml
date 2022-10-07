@@ -2,18 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/trans_graph"
-    app:startDestination="@id/cardInfoFragment">
+    android:id="@+id/cards_graph"
+    app:startDestination="@id/cardsFragment">
 
     <fragment
-        android:id="@+id/cardInfoFragment"
-        android:name="com.example.myapplicationnewmotion.fragments.CardInfoFragment"
-        android:label="activity_card_holder"
-        tools:layout="@layout/fragment_card_info">
+        android:id="@+id/cardsFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardsFragment"
+        android:label="fragment_cards"
+        tools:layout="@layout/fragment_cards">
         <argument
-            android:name="myArg"
+            android:name="cardsData"
             android:defaultValue="Hey!"
             app:argType="string" />
     </fragment>
-
 </navigation>

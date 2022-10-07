@@ -14,12 +14,15 @@
         android:theme="@style/Theme.MyApplicationNewMotion"
         tools:targetApi="31">
         <activity
-<<<<<<< HEAD
-            android:name=".CardHolderActivity"
+            android:name=".activities.ContainerActivity"
             android:exported="false"
-            android:theme="@style/Theme.MyApplicationNewMotion.NoActionBar"/>
+            android:theme="@style/Theme.MyApplicationNewMotion.CardsContainer"/>
         <activity
-            android:name=".LauncherActivity"
+            android:name=".activities.CardHolderActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplicationNewMotion.NoActionBar" />
+        <activity
+            android:name=".activities.LauncherActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplicationNewMotion.Launcher">
             <intent-filter>
@@ -29,26 +32,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="false" />
-=======
-            android:name=".LauncherActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyApplicationNewMotion.Launcher">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
->>>>>>> 4063d65dd6c98ccbb525197fa9b692861a21ff10
     </application>
 
 </manifest>
