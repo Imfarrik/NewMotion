@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+//
         bottomNavigationView.setOnItemReselectedListener {
             return@setOnItemReselectedListener
         }
