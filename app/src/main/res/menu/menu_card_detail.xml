@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/limits"
+        android:icon="@drawable/limit"
+        android:title="Лимиты"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/operations"
+        android:icon="@drawable/transfer_card"
+        android:title="Операции"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/pie_chart"
+        android:title="История"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/actions_menu_detail"
+        android:icon="@drawable/settings"
+        android:title="Действия"
+        app:showAsAction="ifRoom" />
+</menu>

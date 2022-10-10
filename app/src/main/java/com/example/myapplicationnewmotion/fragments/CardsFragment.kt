@@ -18,15 +18,11 @@ import com.google.gson.reflect.TypeToken
 
 class CardsFragment : Fragment() {
 
-    private lateinit var myAdapter: AdapterCardInfo
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var convertedList: ArrayList<DataCardInfo>
-
     private lateinit var binding: FragmentCardsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentCardsBinding.inflate(inflater, container, false)
         return binding.root
@@ -35,7 +31,9 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = binding.recycleItemCards
+        val myAdapter: AdapterCardInfo
+        val convertedList: ArrayList<DataCardInfo>
+        val recyclerView: RecyclerView = binding.recycleItemCards
 
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -51,7 +49,7 @@ class CardsFragment : Fragment() {
         myAdapter.onItemClick = {
             val a = Gson().toJson(it)
             val b = bundleOf("myArg" to a)
-            CardsFragmentDirections.cardsFragmentToContainerActivity3().let { that ->
+            CardsFragmentDirections.cardsFragmentToCardInfoFragment2().let { that ->
                 findNavController().navigate(
                     that.actionId,
                     b

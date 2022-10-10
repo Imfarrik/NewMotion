@@ -45,10 +45,4 @@ class CardInfoFragment : Fragment() {
 
     }
 
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = CardInfoFragment()
-
-    }
 }

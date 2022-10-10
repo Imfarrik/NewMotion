@@ -52,8 +52,4 @@ class BottomButtonFragment : Fragment() {
 
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance() = BottomButtonFragment()
-    }
 }

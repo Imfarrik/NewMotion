@@ -1,11 +1,10 @@
 package com.example.myapplicationnewmotion.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
+import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.ActivityContainerBinding
 
@@ -18,6 +17,9 @@ class ContainerActivity : AppCompatActivity() {
 
         binding = ActivityContainerBinding.inflate(layoutInflater)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN)
 
         setContentView(binding.root)
 

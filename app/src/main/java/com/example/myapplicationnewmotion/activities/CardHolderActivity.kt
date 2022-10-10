@@ -14,8 +14,10 @@ class CardHolderActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityCardHolderBinding.inflate(layoutInflater)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
         setContentView(binding.root)
 
 //        ViewCompat.setOnApplyWindowInsetsListener(binding.containerCardInfo) { v: View, insets: WindowInsetsCompat ->

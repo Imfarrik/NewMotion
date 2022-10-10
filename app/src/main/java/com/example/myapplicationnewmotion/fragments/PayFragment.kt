@@ -26,9 +26,4 @@ class PayFragment : Fragment() {
 
     }
 
-    companion object {
-
-        @JvmStatic
-        fun newInstance() = PayFragment()
-    }
 }

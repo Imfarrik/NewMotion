@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.myapplicationnewmotion.R
+import com.example.myapplicationnewmotion.navigator.Navigator
 
 class LauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +13,7 @@ class LauncherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate, savedState -> $savedInstanceState")
 
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+        Navigator.startMainActivity(this)
     }
 
     override fun onStart() {

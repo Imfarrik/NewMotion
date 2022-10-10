@@ -1,8 +1,15 @@
 package com.example.myapplicationnewmotion.activities
 
+import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.WindowInsets
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.*
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.myapplicationnewmotion.R
@@ -15,8 +22,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        WindowCompat.setDecorFitsSystemWindows(window, true)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin = insets.bottom
+                topMargin = insets.top
+            }
+            WindowInsetsCompat.CONSUMED
+        }
+
         setContentView(binding.root)
 
         val bottomNavigationView = binding.bottomNavigationView
@@ -53,7 +74,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-//
         bottomNavigationView.setOnItemReselectedListener {
             return@setOnItemReselectedListener
         }
