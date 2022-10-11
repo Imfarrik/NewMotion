@@ -54,6 +54,18 @@ class MainFragment : Fragment() {
         cardList.add(DataCardInfo("256 384", "Отпуск"))
         cardList.add(DataCardInfo("20 546 376", "На машину"))
 
+//        val myAdapter = MyAdapter(cardList) { it, _ ->
+//            val cardData = Gson().toJson(it)
+//            val bundle = bundleOf("myArg" to cardData)
+//
+//            MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
+//                findNavController().navigate(
+//                    that.actionId,
+//                    bundle
+//                )
+//            }
+//        }
+
         val myAdapter = MyAdapter(cardList) { it, _ ->
             val cardData = Gson().toJson(it)
             val bundle = bundleOf("myArg" to cardData)

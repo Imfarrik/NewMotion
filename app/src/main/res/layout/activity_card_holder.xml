@@ -5,18 +5,15 @@
     android:id="@+id/containerCardInfo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/card_info_bg"
-    android:fitsSystemWindows="true"
     tools:context=".activities.CardHolderActivity">
 
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -31,6 +31,7 @@ class AdapterCardInfo(
 
     override fun getItemCount(): Int = value.size
 
+
     inner class MyViewHolder(val binding: RecycleItemCardInfoBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
