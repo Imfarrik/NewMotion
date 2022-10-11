@@ -44,10 +44,11 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_item_cards"
-                android:layout_width="350dp"
+                android:layout_width="370dp"
                 android:orientation="vertical"
                 android:layout_gravity="center_horizontal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"/>
 
 
     </ScrollView>

@@ -10,12 +10,13 @@
     tools:context=".activities.CardHolderActivity">
 
 
-    <androidx.fragment.app.FragmentContainerView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/fragmentContainerView2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:defaultNavHost="true"
+        android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

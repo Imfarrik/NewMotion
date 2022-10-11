@@ -52,8 +52,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/item_card_info"
-            android:layout_width="350dp"
-            android:layout_height="200dp"
+            android:layout_width="360dp"
+            android:layout_height="220dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="72dp"
-            android:layout_margin="25dp"
+            android:layout_margin="20dp"
             android:background="@drawable/menu_card_info_bg"
             app:itemIconSize="30dp"
             app:itemIconTint="@color/purple_500"

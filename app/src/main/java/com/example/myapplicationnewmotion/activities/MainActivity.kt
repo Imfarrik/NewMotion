@@ -1,11 +1,7 @@
 package com.example.myapplicationnewmotion.activities
 
-import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -26,19 +22,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
-//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+//        window.setFlags(
+//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
 //            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+
         WindowCompat.setDecorFitsSystemWindows(window, true)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, windowInsets ->
-            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin = insets.bottom
-                topMargin = insets.top
-            }
-            WindowInsetsCompat.CONSUMED
-        }
+//        ViewCompat.setOnApplyWindowInsetsListener(binding.container) { v, windowInsets ->
+//            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            println(insets.toString())
+//            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+//                bottomMargin = insets.bottom
+//                leftMargin = insets.left
+//                rightMargin = insets.right
+//                topMargin = insets.top
+//            }
+//            WindowInsetsCompat.CONSUMED
+//        }
 
         setContentView(binding.root)
+
 
         val bottomNavigationView = binding.bottomNavigationView
         val navController = findNavController(R.id.fragmentContainerView)
@@ -95,7 +97,6 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = binding.bottomNavigationView
         bottomNavigationView.selectedItemId = R.id.mainFragment
     }
-}
 
 
 //    private fun completelyTransparentStatusBar() {
@@ -104,6 +105,6 @@ class MainActivity : AppCompatActivity() {
 //            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
 //            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
 //        )
-//    }
+}
 
 

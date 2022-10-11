@@ -21,6 +21,9 @@
         <item name="android:navigationBarColor">@color/transparent</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.MyApplicationNewMotion.Launcher">
@@ -31,14 +34,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">#26263C</item>
-        <item name="android:navigationBarColor">#fff2f4f8</item>
+        <item name="android:navigationBarColor">#80ffffff</item>
     </style>
     <style name="Theme.MyApplicationNewMotion.CardsContainer">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@color/purple_500</item>
-        <item name="android:navigationBarColor">#fff2f4f8</item>
+        <item name="android:navigationBarColor">#80ffffff</item>
     </style>
 </resources>
