@@ -1,19 +1,21 @@
 package com.example.myapplicationnewmotion.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.adapter.AdapterTest
+import com.example.myapplicationnewmotion.activities.ContainerActivity
 import com.example.myapplicationnewmotion.adapter.MyAdapter
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
+import com.example.myapplicationnewmotion.navigator.Navigator
 import com.google.gson.Gson
 
 
@@ -32,15 +34,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, windowInsets ->
-//            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-//                bottomMargin = 0
-//            }
-//            WindowInsetsCompat.CONSUMED
-//        }
-
-        val cardTestAdapter: AdapterTest
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            binding.root.updatePadding(top = statusBarHeight, bottom = navBarHeight)
+            insets
+        }
 
         val recyclerView: RecyclerView = binding.itemBgRecycle
         recyclerView.layoutManager =
@@ -54,83 +53,16 @@ class MainFragment : Fragment() {
         cardList.add(DataCardInfo("256 384", "Отпуск"))
         cardList.add(DataCardInfo("20 546 376", "На машину"))
 
-//        val myAdapter = MyAdapter(cardList) { it, _ ->
-//            val cardData = Gson().toJson(it)
-//            val bundle = bundleOf("myArg" to cardData)
-//
-//            MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
-//                findNavController().navigate(
-//                    that.actionId,
-//                    bundle
-//                )
-//            }
-//        }
+        val cardData = Gson().toJson(cardList)
 
-        val myAdapter = MyAdapter(cardList) { it, _ ->
-            val cardData = Gson().toJson(it)
-            val bundle = bundleOf("myArg" to cardData)
-
-            MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
-                findNavController().navigate(
-                    that.actionId,
-                    bundle
-                )
-            }
+        val myAdapter = MyAdapter(cardList) { _, pos ->
+            Navigator.startCardHolderActivity(context, cardData, pos)
         }
 
         recyclerView.adapter = myAdapter
 
-//        cardTestAdapter = AdapterTest(cardList)
-//        recyclerView.adapter = cardTestAdapter
-
-//        cardTestAdapter.onItemClick = {
-//
-//            val cardData = Gson().toJson(it)
-//            val bundle = bundleOf("myArg" to cardData)
-//
-//            MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
-//                findNavController().navigate(
-//                    that.actionId,
-//                    bundle
-//                )
-//            }
-//        }
-
         binding.buttonCards.setOnClickListener {
-            val cardsData = Gson().toJson(cardList)
-            val shareBundle = bundleOf("cardsData" to cardsData)
-            Log.i("myTog", cardsData)
-            MainFragmentDirections.mainFragmentToCardsFragment().let {
-                findNavController().navigate(it.actionId, shareBundle)
-            }
+            Navigator.startContainerActivity(context, cardData)
         }
-
-
-//        val item: List<String> = (0..6).map { it.toString() }
-
-//        val myAdapter = MyAdapter(item) { it, position ->
-//            val gson = Gson().toJson(it)
-//            val bundle = bundleOf("myArg" to it)
-//
-////            val intent = Intent(context, CardHolderActivity::class.java)
-////            intent.putExtra("myArg", bundle)
-////            startActivity(intent)
-//
-////            findNavController().navigate(R.id.mainFragmentToCardInfoFragment, bundle)
-//
-//            MainFragmentDirections.mainFragmentToCardInfoFragment().let {
-//                findNavController().navigate(
-//                    it.actionId,
-//                    bundle
-//                )
-//            }
-//
-//        }
-
-//        binding.itemBgRecycle.layoutManager =
-//            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-//
-//        binding.itemBgRecycle.adapter = myAdapter
-
     }
 }

@@ -7,10 +7,9 @@ import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.RecycleItemCardInfoBinding
 
 class AdapterCardInfo(
-    private val value: ArrayList<DataCardInfo>
+    private val value: ArrayList<DataCardInfo>, private val listener: (DataCardInfo, Int) -> Unit
 ) : RecyclerView.Adapter<AdapterCardInfo.MyViewHolder>() {
 
-    var onItemClick: ((DataCardInfo) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -24,9 +23,7 @@ class AdapterCardInfo(
         holder.balance.text = item.cardBalance
         holder.disc.text = item.cardDescription
 
-        holder.itemView.setOnClickListener {
-            onItemClick?.invoke(item)
-        }
+        holder.initView(item, position)
     }
 
     override fun getItemCount(): Int = value.size
@@ -37,6 +34,12 @@ class AdapterCardInfo(
 
         val balance = binding.cardBalance
         val disc = binding.testIdText
+
+        fun initView(item:DataCardInfo, position: Int) {
+            itemView.setOnClickListener {
+                listener(item, position)
+            }
+        }
 
     }
 }

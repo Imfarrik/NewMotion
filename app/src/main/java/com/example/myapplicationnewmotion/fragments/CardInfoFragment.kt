@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardInfoBinding
+import com.example.myapplicationnewmotion.navigator.Navigator
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -27,29 +28,38 @@ class CardInfoFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
             val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
             binding.root.updatePadding(top = statusBarHeight, bottom = navBarHeight)
+            binding.navigationCardDetailsMenu.setOnApplyWindowInsetsListener {_, inset ->
+                binding.navigationCardDetailsMenu.updatePadding(top = 0, bottom = 0)
+                inset
+            }
             insets
         }
 
-        binding.itemCardInfo.layoutManager =
+        val itemCardInfo = binding.itemCardInfo
+
+        itemCardInfo.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        val bundle = arguments?.getString("myArg")
-        val converter = Gson().fromJson(bundle, DataCardInfo::class.java)
-        val some = arrayListOf(converter)
+        val arg = arguments?.getString(Navigator.MY_ARG)
+        val argPos = arguments?.getInt(Navigator.MY_ARG_POS)
+        val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
+        val convertedList: ArrayList<DataCardInfo> = Gson().fromJson(arg, listType)
 
-        val myAdapter = AdapterCardInfo(some)
+        val myAdapter = AdapterCardInfo(convertedList) { _, _ -> }
 
-        binding.itemCardInfo.adapter = myAdapter
+        itemCardInfo.adapter = myAdapter
 
 
+//        (itemCardInfo.layoutManager as LinearLayoutManager).scrollToPosition(argPos!!)
+        itemCardInfo.smoothScrollToPosition(argPos!!)
 
         binding.backButton.setOnClickListener {
             requireActivity().onBackPressed()

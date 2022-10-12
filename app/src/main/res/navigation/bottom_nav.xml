@@ -10,13 +10,6 @@
         android:name="com.example.myapplicationnewmotion.fragments.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
-        <action
-            android:id="@+id/mainFragmentToCardInfoFragment"
-            app:destination="@id/cardHolderActivity" />
-        <action
-            android:id="@+id/mainFragmentToCardsFragment"
-            app:destination="@id/containerActivity"/>
-
     </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
@@ -33,25 +26,5 @@
         android:name="com.example.myapplicationnewmotion.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
-    <activity
-        android:id="@+id/cardHolderActivity"
-        android:name="com.example.myapplicationnewmotion.activities.CardHolderActivity"
-        android:label="activity_card_holder"
-        tools:layout="@layout/activity_card_holder">
-        <argument
-            android:name="myArg"
-            android:defaultValue="Hey!"
-            app:argType="string" />
-    </activity>
-    <activity
-        android:id="@+id/containerActivity"
-        android:name="com.example.myapplicationnewmotion.activities.ContainerActivity"
-        android:label="activity_container"
-        tools:layout="@layout/activity_container">
-        <argument
-            android:name="cardsData"
-            android:defaultValue="Hey!"
-            app:argType="string" />
-    </activity>
 
 </navigation>

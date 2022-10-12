@@ -14,6 +14,10 @@
             android:name="myArg"
             android:defaultValue="Hey!"
             app:argType="string" />
+        <argument
+            android:name="myArgPos"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
 
 </navigation>

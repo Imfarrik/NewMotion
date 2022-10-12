@@ -21,25 +21,15 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
 
-//        window.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-        WindowCompat.setDecorFitsSystemWindows(window, true)
-//        ViewCompat.setOnApplyWindowInsetsListener(binding.container) { v, windowInsets ->
-//            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            println(insets.toString())
-//            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-//                bottomMargin = insets.bottom
-//                leftMargin = insets.left
-//                rightMargin = insets.right
-//                topMargin = insets.top
-//            }
-//            WindowInsetsCompat.CONSUMED
-//        }
-
         setContentView(binding.root)
 
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomAppBar) { _, insets ->
+            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom
+            binding.bottomNavigationView.updatePadding(bottom = navBarHeight)
+            insets
+        }
 
         val bottomNavigationView = binding.bottomNavigationView
         val navController = findNavController(R.id.fragmentContainerView)
@@ -84,19 +74,12 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
 
-        val bottomNavigationViewSelectItem = binding.bottomNavigationView.selectedItemId
+        val bottomNavigationView = binding.bottomNavigationView
 
-        if (R.id.mainFragment != bottomNavigationViewSelectItem) {
-            setHomeItem()
-
+        if (R.id.mainFragment != bottomNavigationView.selectedItemId) {
+            bottomNavigationView.selectedItemId = R.id.mainFragment
         }
     }
-
-    private fun setHomeItem() {
-        val bottomNavigationView = binding.bottomNavigationView
-        bottomNavigationView.selectedItemId = R.id.mainFragment
-    }
-
 
 //    private fun completelyTransparentStatusBar() {
 //        val w = window

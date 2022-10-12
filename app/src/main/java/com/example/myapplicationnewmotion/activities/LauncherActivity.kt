@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.myapplicationnewmotion.R
+import com.example.myapplicationnewmotion.databinding.ActivityLauncherBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
 
 class LauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        setTheme(R.style.Theme_MyApplicationNewMotion_Launcher)
+//        setTheme(R.style.Theme_MyApplicationNewMotion_Launcher)
         super.onCreate(savedInstanceState)
+        val binding = ActivityLauncherBinding.inflate(layoutInflater)
         Log.d(TAG, "onCreate, savedState -> $savedInstanceState")
-
+        setContentView(binding.root)
         Navigator.startMainActivity(this)
     }
 

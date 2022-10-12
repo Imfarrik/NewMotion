@@ -1,5 +1,6 @@
 package com.example.myapplicationnewmotion.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -15,12 +16,10 @@ class CardHolderActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCardHolderBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityCardHolderBinding.inflate(layoutInflater)
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         setContentView(binding.root)
 
@@ -31,6 +30,8 @@ class CardHolderActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         navController
             .setGraph(R.navigation.trans_graph, intent.extras)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
 
     }

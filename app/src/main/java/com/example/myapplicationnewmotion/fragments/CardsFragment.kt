@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
+import com.example.myapplicationnewmotion.navigator.Navigator
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -49,33 +50,26 @@ class CardsFragment : Fragment() {
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        val bundle = arguments?.getString("cardsData")
+        val bundle = arguments?.getString(Navigator.CARDS_DATA)
         val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
         convertedList = Gson().fromJson(bundle, listType)
 
-        myAdapter = AdapterCardInfo(convertedList)
-
-        recyclerView.adapter = myAdapter
-
-        myAdapter.onItemClick = {
-            val a = Gson().toJson(it)
-            val b = bundleOf("myArg" to a)
+        myAdapter = AdapterCardInfo(convertedList) { _, pos ->
+            val toJson = Gson().toJson(convertedList)
+            val bundlePost = bundleOf(Navigator.MY_ARG to toJson, Navigator.MY_ARG_POS to pos)
             CardsFragmentDirections.cardsFragmentToCardInfoFragment2().let { that ->
                 findNavController().navigate(
                     that.actionId,
-                    b
+                    bundlePost
                 )
             }
         }
+
+        recyclerView.adapter = myAdapter
 
         binding.backButtonCardsFragment.setOnClickListener {
             requireActivity().onBackPressed()
         }
 
-    }
-
-    companion object {
-        @JvmStatic
-        fun newInstance() = CardsFragment()
     }
 }
