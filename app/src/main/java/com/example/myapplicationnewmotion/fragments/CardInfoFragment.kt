@@ -15,7 +15,7 @@ import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardInfoBinding
-import com.example.myapplicationnewmotion.navigator.Navigator
+import com.example.myapplicationnewmotion.navigator.navigator
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -71,7 +71,9 @@ class CardInfoFragment : Fragment() {
                     findNavController().navigate(CardInfoFragmentDirections.cardInfoFragmentToLimitFragment())
                 }
                 R.id.operations -> {
-                    findNavController().navigate(CardInfoFragmentDirections.cardInfoFragmentToCardOptionsFragment())
+//                    findNavController().navigate(CardInfoFragmentDirections.cardInfoFragmentToCardOptionsFragment())
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.fragmentContainerView, CardOptionsFragment())?.addToBackStack(null)?.commit()
                 }
             }
             true
@@ -79,7 +81,7 @@ class CardInfoFragment : Fragment() {
 
 
         binding.backButton.setOnClickListener {
-            requireActivity().onBackPressed()
+            navigator().onBack()
         }
 
     }

@@ -2,9 +2,15 @@ package com.example.myapplicationnewmotion.navigator
 
 import android.content.Context
 import android.content.Intent
+import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.myapplicationnewmotion.activities.CardHolderActivity
 import com.example.myapplicationnewmotion.activities.ContainerActivity
 import com.example.myapplicationnewmotion.activities.MainActivity
+
+fun Fragment.navigator(): Navigator {
+    return requireActivity() as Navigator
+}
 
 interface Navigator {
 
@@ -34,4 +40,10 @@ interface Navigator {
         }
 
     }
+
+    fun insets(view: View)
+
+    fun onBack()
+
+    fun hideBottomNavBar(a: Boolean)
 }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.databinding.FragmentTransactionsBinding
+import com.example.myapplicationnewmotion.navigator.navigator
 
 
 class TransactionsFragment : Fragment() {
@@ -29,12 +30,12 @@ class TransactionsFragment : Fragment() {
     }
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).hideBottomNavBar(false)
+        navigator().hideBottomNavBar(false)
     }
 
     override fun onPause() {
         super.onPause()
-        (activity as MainActivity).hideBottomNavBar(true)
+        navigator().hideBottomNavBar(true)
 
     }
 }

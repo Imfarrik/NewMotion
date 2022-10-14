@@ -12,9 +12,10 @@ import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
+import com.example.myapplicationnewmotion.navigator.Navigator
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Navigator {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun hideBottomNavBar(a: Boolean) {
+    override fun hideBottomNavBar(a: Boolean) {
         if (a) {
             binding.bottomAppBar.visibility = View.GONE
             binding.floatingBottom.visibility = View.GONE
@@ -92,6 +93,19 @@ class MainActivity : AppCompatActivity() {
         if (R.id.mainFragment != bottomNavigationView.selectedItemId) {
             bottomNavigationView.selectedItemId = R.id.mainFragment
         }
+    }
+
+    override fun insets(view: View) {
+        return ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+            view.updatePadding(top = statusBarHeight, bottom = navBarHeight)
+            insets
+        }
+    }
+
+    override fun onBack() {
+        onBackPressed()
     }
 }
 

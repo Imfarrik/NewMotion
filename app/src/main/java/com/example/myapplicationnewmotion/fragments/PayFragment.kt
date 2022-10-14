@@ -10,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.databinding.FragmentPayBinding
+import com.example.myapplicationnewmotion.navigator.navigator
 
 
 class PayFragment : Fragment() {
@@ -27,23 +28,18 @@ class PayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
-            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            binding.root.updatePadding(top = statusBarHeight, bottom = navBarHeight)
-            insets
-        }
+        navigator().insets(binding.root)
 
     }
 
     override fun onResume() {
         super.onResume()
-        (activity as MainActivity).hideBottomNavBar(false)
+        navigator().hideBottomNavBar(false)
     }
 
     override fun onPause() {
         super.onPause()
-        (activity as MainActivity).hideBottomNavBar(true)
+        navigator().hideBottomNavBar(true)
 
     }
 

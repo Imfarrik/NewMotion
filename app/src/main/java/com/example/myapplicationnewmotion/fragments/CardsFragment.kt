@@ -17,6 +17,7 @@ import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
+import com.example.myapplicationnewmotion.navigator.navigator
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -36,12 +37,7 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
-            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            binding.root.updatePadding(top = statusBarHeight, bottom = navBarHeight)
-            insets
-        }
+        navigator().insets(binding.root)
 
         val myAdapter: AdapterCardInfo
         val convertedList: ArrayList<DataCardInfo>
@@ -68,7 +64,7 @@ class CardsFragment : Fragment() {
         recyclerView.adapter = myAdapter
 
         binding.backButtonCardsFragment.setOnClickListener {
-            requireActivity().onBackPressed()
+            navigator().onBack()
         }
 
     }
