@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
@@ -42,7 +43,6 @@ class CardsFragment : Fragment() {
             insets
         }
 
-
         val myAdapter: AdapterCardInfo
         val convertedList: ArrayList<DataCardInfo>
         val recyclerView: RecyclerView = binding.recycleItemCards
@@ -57,7 +57,7 @@ class CardsFragment : Fragment() {
         myAdapter = AdapterCardInfo(convertedList) { _, pos ->
             val toJson = Gson().toJson(convertedList)
             val bundlePost = bundleOf(Navigator.MY_ARG to toJson, Navigator.MY_ARG_POS to pos)
-            CardsFragmentDirections.cardsFragmentToCardInfoFragment2().let { that ->
+            CardsFragmentDirections.cardsFragmentToCardInfoFragment().let { that ->
                 findNavController().navigate(
                     that.actionId,
                     bundlePost

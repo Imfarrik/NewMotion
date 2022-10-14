@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplicationnewmotion.R
+import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -25,6 +25,16 @@ class SettingsFragment : Fragment() {
 
 
 
+
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).hideBottomNavBar(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).hideBottomNavBar(true)
 
     }
 }

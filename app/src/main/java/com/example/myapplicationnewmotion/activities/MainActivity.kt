@@ -1,11 +1,13 @@
 package com.example.myapplicationnewmotion.activities
 
 import android.os.Bundle
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.view.*
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.myapplicationnewmotion.R
@@ -15,6 +17,7 @@ import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,8 +35,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         val bottomNavigationView = binding.bottomNavigationView
-        val navController = findNavController(R.id.fragmentContainerView)
-        navController.setGraph(R.navigation.bottom_nav)
+        navController = findNavController(R.id.fragmentContainerView)
+        navController.setGraph(R.navigation.main_bottom_nav_graph)
 
         bottomNavigationView.background = null
         bottomNavigationView.itemRippleColor = null
@@ -50,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.mainFragment -> {
-                    navController.navigate(R.id.mainFragment, null, options)
+                    navController.navigate(R.id.mainPage, null, options)
                 }
                 R.id.transactionsFragment -> {
                     navController.navigate(R.id.transactionsFragment, null, options)
@@ -71,6 +74,16 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun hideBottomNavBar(a: Boolean) {
+        if (a) {
+            binding.bottomAppBar.visibility = View.GONE
+            binding.floatingBottom.visibility = View.GONE
+        } else {
+            binding.bottomAppBar.visibility = View.VISIBLE
+            binding.floatingBottom.visibility = View.VISIBLE
+        }
+    }
+
     override fun onBackPressed() {
         super.onBackPressed()
 
@@ -80,13 +93,6 @@ class MainActivity : AppCompatActivity() {
             bottomNavigationView.selectedItemId = R.id.mainFragment
         }
     }
-
-//    private fun completelyTransparentStatusBar() {
-//        val w = window
-//        w.setFlags(
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
-//            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
-//        )
 }
 
 

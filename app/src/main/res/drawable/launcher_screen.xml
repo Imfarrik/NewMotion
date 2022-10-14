@@ -11,6 +11,5 @@
         android:width="96dp"
         android:height="96dp"
         android:drawable="@drawable/ic_logo_launcher"
-        android:gravity="center"
-        />
+        android:gravity="center" />
 </layer-list>

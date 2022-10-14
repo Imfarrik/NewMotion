@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.databinding.FragmentTransactionsBinding
 
 
@@ -24,6 +25,16 @@ class TransactionsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
+
+    }
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).hideBottomNavBar(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).hideBottomNavBar(true)
 
     }
 }

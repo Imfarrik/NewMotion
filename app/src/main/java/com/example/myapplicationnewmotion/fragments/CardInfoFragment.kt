@@ -8,7 +8,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardInfoBinding
@@ -36,7 +39,7 @@ class CardInfoFragment : Fragment() {
             val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
             val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
             binding.root.updatePadding(top = statusBarHeight, bottom = navBarHeight)
-            binding.navigationCardDetailsMenu.setOnApplyWindowInsetsListener {_, inset ->
+            binding.navigationCardDetailsMenu.setOnApplyWindowInsetsListener { _, inset ->
                 binding.navigationCardDetailsMenu.updatePadding(top = 0, bottom = 0)
                 inset
             }
@@ -48,18 +51,32 @@ class CardInfoFragment : Fragment() {
         itemCardInfo.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
-        val arg = arguments?.getString(Navigator.MY_ARG)
-        val argPos = arguments?.getInt(Navigator.MY_ARG_POS)
+//        val arg: String? = arguments?.getString(Navigator.MY_ARG)
+//        val argPos: Int? = arguments?.getInt(Navigator.MY_ARG_POS)
+        val arg = navArgs<CardInfoFragmentArgs>().value.myArg
+        val argPos = navArgs<CardInfoFragmentArgs>().value.myArgPos
         val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
         val convertedList: ArrayList<DataCardInfo> = Gson().fromJson(arg, listType)
+
+        (itemCardInfo.layoutManager as LinearLayoutManager).scrollToPosition(argPos)
+//        itemCardInfo.smoothScrollToPosition(argPos)
 
         val myAdapter = AdapterCardInfo(convertedList) { _, _ -> }
 
         itemCardInfo.adapter = myAdapter
 
+        binding.navigationCardDetailsMenu.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.limits -> {
+                    findNavController().navigate(CardInfoFragmentDirections.cardInfoFragmentToLimitFragment())
+                }
+                R.id.operations -> {
+                    findNavController().navigate(CardInfoFragmentDirections.cardInfoFragmentToCardOptionsFragment())
+                }
+            }
+            true
+        }
 
-//        (itemCardInfo.layoutManager as LinearLayoutManager).scrollToPosition(argPos!!)
-        itemCardInfo.smoothScrollToPosition(argPos!!)
 
         binding.backButton.setOnClickListener {
             requireActivity().onBackPressed()

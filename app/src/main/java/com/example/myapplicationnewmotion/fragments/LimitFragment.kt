@@ -8,19 +8,18 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
-import com.example.myapplicationnewmotion.activities.MainActivity
-import com.example.myapplicationnewmotion.databinding.FragmentPayBinding
+import com.example.myapplicationnewmotion.R
+import com.example.myapplicationnewmotion.databinding.FragmentLimitBinding
 
+class LimitFragment : Fragment() {
 
-class PayFragment : Fragment() {
-
-    private lateinit var binding: FragmentPayBinding
+    private lateinit var binding: FragmentLimitBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPayBinding.inflate(inflater, container, false)
+        binding = FragmentLimitBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,16 +33,7 @@ class PayFragment : Fragment() {
             insets
         }
 
-    }
 
-    override fun onResume() {
-        super.onResume()
-        (activity as MainActivity).hideBottomNavBar(false)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        (activity as MainActivity).hideBottomNavBar(true)
 
     }
 

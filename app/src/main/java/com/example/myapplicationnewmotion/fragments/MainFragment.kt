@@ -1,17 +1,19 @@
 package com.example.myapplicationnewmotion.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.activities.ContainerActivity
+import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.adapter.MyAdapter
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
@@ -56,13 +58,39 @@ class MainFragment : Fragment() {
         val cardData = Gson().toJson(cardList)
 
         val myAdapter = MyAdapter(cardList) { _, pos ->
-            Navigator.startCardHolderActivity(context, cardData, pos)
+//            Navigator.startCardHolderActivity(context, cardData, pos)
+            val bundlePostA = bundleOf(Navigator.MY_ARG to cardData, Navigator.MY_ARG_POS to pos)
+            MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
+                findNavController().navigate(
+                    that.actionId,
+                    bundlePostA
+                )
+            }
+
         }
 
         recyclerView.adapter = myAdapter
 
         binding.buttonCards.setOnClickListener {
-            Navigator.startContainerActivity(context, cardData)
+//            Navigator.startContainerActivity(context, cardData)
+            val bundlePost = bundleOf(Navigator.CARDS_DATA to cardData)
+            MainFragmentDirections.mainFragmentToCardsFragment().let { that ->
+                findNavController().navigate(
+                    that.actionId,
+                    bundlePost,
+                )
+            }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as MainActivity).hideBottomNavBar(false)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        (activity as MainActivity).hideBottomNavBar(true)
+
     }
 }

@@ -21,12 +21,13 @@ class ContainerActivity : AppCompatActivity() {
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView3) as NavHostFragment
         val navController = navHostFragment.navController
-        navController
-            .setGraph(R.navigation.cards_graph, intent.extras)
+//        navController
+//            .setGraph(R.navigation.cards_graph, intent.extras)
 
     }
 }
+
+
