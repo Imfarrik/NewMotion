@@ -5,15 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.adapter.MyAdapter
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
@@ -59,10 +55,15 @@ class MainFragment : Fragment() {
             MainFragmentDirections.mainFragmentToCardInfoFragment().let { that ->
                 findNavController().navigate(
                     that.actionId,
-                    bundlePostA
+                    bundlePostA,
+                    NavOptions.Builder()
+                        .setEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+                        .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+                        .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+                        .setPopExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+                        .build()
                 )
             }
-
         }
 
         recyclerView.adapter = myAdapter
@@ -74,6 +75,12 @@ class MainFragment : Fragment() {
                 findNavController().navigate(
                     that.actionId,
                     bundlePost,
+                    NavOptions.Builder()
+                        .setEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+                        .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+                        .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
+                        .setPopExitAnim(androidx.appcompat.R.anim.abc_fade_out)
+                        .build()
                 )
             }
         }

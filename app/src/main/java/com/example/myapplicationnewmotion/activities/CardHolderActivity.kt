@@ -24,7 +24,7 @@ class CardHolderActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
         val navController = navHostFragment.navController
-//        navController
-//            .setGraph(R.navigation.home_page_graph, intent.extras)
+        navController
+            .setGraph(R.navigation.home_nav_graph, intent.extras)
     }
 }

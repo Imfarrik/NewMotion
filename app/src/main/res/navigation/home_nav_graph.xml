@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainPage"
+    app:startDestination="@+id/main">
+
+    <fragment
+        android:id="@+id/main"
+        android:name="com.example.myapplicationnewmotion.fragments.MainFragment"
+        tools:layout="@layout/fragment_main"
+        android:label="main">
+        <action
+            android:id="@+id/mainFragmentToCardInfoFragment"
+            app:destination="@id/cardInfoFragment"
+            app:popUpTo="@id/cardInfoFragment"
+            app:popUpToInclusive="true"/>
+        <action
+            android:id="@+id/mainFragmentToCardsFragment"
+            app:destination="@+id/cardsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardInfoFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardInfoFragment"
+        tools:layout="@layout/fragment_card_info"
+        android:label="fragment_card_info">
+        <action
+            android:id="@+id/cardInfoFragmentToLimitFragment"
+            app:destination="@+id/limitFragment" />
+        <action
+            android:id="@+id/cardInfoFragmentToCardOptionsFragment"
+            app:destination="@+id/cardOptionsFragment" />
+        <argument
+            android:name="myArg"
+            android:defaultValue="hey"
+            app:argType="string" />
+        <argument
+            android:name="myArgPos"
+            android:defaultValue="3"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cardsFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardsFragment"
+        tools:layout="@layout/fragment_cards"
+        android:label="fragment_cards">
+        <action
+            android:id="@+id/cardsFragmentToCardInfoFragment"
+            app:destination="@+id/cardInfoFragment" />
+        <argument
+            android:name="cardsData"
+            android:defaultValue="Hey!"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/limitFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.LimitFragment"
+        tools:layout="@layout/fragment_limit"
+        android:label="fragment_limit" />
+
+    <fragment
+        android:id="@+id/cardOptionsFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardOptionsFragment"
+        tools:layout="@layout/fragment_card_options"
+        android:label="fragment_card_options" />
+</navigation>

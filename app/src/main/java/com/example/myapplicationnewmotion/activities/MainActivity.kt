@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), Navigator {
 
         bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.mainFragment -> {
+                R.id.mainPage -> {
                     navController.navigate(R.id.mainPage, null, options)
                 }
                 R.id.transactionsFragment -> {
@@ -90,8 +90,8 @@ class MainActivity : AppCompatActivity(), Navigator {
 
         val bottomNavigationView = binding.bottomNavigationView
 
-        if (R.id.mainFragment != bottomNavigationView.selectedItemId) {
-            bottomNavigationView.selectedItemId = R.id.mainFragment
+        if (R.id.mainPage != bottomNavigationView.selectedItemId) {
+            bottomNavigationView.selectedItemId = R.id.mainPage
         }
     }
 

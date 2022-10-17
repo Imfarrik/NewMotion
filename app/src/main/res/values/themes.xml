@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.MyApplicationNewMotion" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
@@ -19,6 +19,7 @@
     <style name="Theme.MyApplicationNewMotion.Launcher">
         <item name="android:windowBackground">@drawable/launcher_screen</item>
         <item name="android:navigationBarColor">@color/purple_500</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
 </resources>
