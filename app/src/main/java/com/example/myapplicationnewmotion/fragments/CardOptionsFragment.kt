@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment
 import com.example.myapplicationnewmotion.activities.CardInfoContainerActivity
 import com.example.myapplicationnewmotion.activities.MainActivity
 import com.example.myapplicationnewmotion.databinding.FragmentCardOptionsBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CardOptionsFragment : DialogFragment() {
+class CardOptionsFragment : BottomSheetDialogFragment() {
 
     private lateinit var binding: FragmentCardOptionsBinding
 
