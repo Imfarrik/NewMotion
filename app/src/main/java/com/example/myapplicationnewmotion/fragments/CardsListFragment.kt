@@ -40,7 +40,7 @@ class CardsListFragment : Fragment() {
         }
 
         binding.let {
-            it.backButtonCardsFragment.setOnClickListener { requireActivity().onBackPressed() }
+            it.backButtonCardsFragment.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
             it.recycleItemCards.layoutManager =
                 LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             it.recycleItemCards.adapter = myAdapter

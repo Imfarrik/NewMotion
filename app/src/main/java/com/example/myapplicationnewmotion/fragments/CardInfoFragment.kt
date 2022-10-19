@@ -42,7 +42,7 @@ class CardInfoFragment : Fragment() {
         val myAdapter = AdapterCardInfo(getBundleArrayData(arg!!)) { _, _ -> }
 
         binding.let {
-            it.backButton.setOnClickListener { requireActivity().onBackPressed() }
+            it.backButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
             it.itemCardInfo.let { rv ->
                 rv.layoutManager =

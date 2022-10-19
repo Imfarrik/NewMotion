@@ -1,11 +1,10 @@
 package com.example.myapplicationnewmotion.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplicationnewmotion.R
+import androidx.fragment.app.Fragment
 import com.example.myapplicationnewmotion.databinding.FragmentLimitBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
 
@@ -26,7 +25,7 @@ class LimitFragment : Fragment() {
         Navigator.insets(binding.root)
 
         binding.let {
-            it.backButton.setOnClickListener { requireActivity().onBackPressed() }
+            it.backButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
         }
 
 
