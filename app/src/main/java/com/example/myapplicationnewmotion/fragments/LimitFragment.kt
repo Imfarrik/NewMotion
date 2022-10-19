@@ -5,15 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.updatePadding
 import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.FragmentLimitBinding
-import com.example.myapplicationnewmotion.navigator.navigator
+import com.example.myapplicationnewmotion.navigator.Navigator
 
 class LimitFragment : Fragment() {
-
     private lateinit var binding: FragmentLimitBinding
 
     override fun onCreateView(
@@ -27,10 +23,10 @@ class LimitFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        navigator().insets(binding.root)
+        Navigator.insets(binding.root)
 
-        binding.backButton.setOnClickListener {
-            navigator().onBack()
+        binding.let {
+            it.backButton.setOnClickListener { requireActivity().onBackPressed() }
         }
 
 

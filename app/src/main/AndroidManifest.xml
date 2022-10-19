@@ -14,10 +14,10 @@
         android:theme="@style/Theme.MyApplicationNewMotion"
         tools:targetApi="31">
         <activity
-            android:name=".activities.ContainerActivity"
+            android:name=".activities.CardListContainerActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.CardHolderActivity"
+            android:name=".activities.CardInfoContainerActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LauncherActivity"

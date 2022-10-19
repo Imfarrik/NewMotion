@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplicationnewmotion.activities.MainActivity
+import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.FragmentSettingsBinding
-import com.example.myapplicationnewmotion.navigator.navigator
+import com.example.myapplicationnewmotion.navigator.Navigator
 
 class SettingsFragment : Fragment() {
 
@@ -24,18 +24,9 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Navigator.insets(binding.root)
 
 
-
-    }
-    override fun onResume() {
-        super.onResume()
-        navigator().hideBottomNavBar(false)
-    }
-
-    override fun onPause() {
-        super.onPause()
-        navigator().hideBottomNavBar(true)
 
     }
 }

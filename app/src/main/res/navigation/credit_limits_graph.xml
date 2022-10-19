@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cards_detail_graph"
+    app:startDestination="@id/limitFragment">
+
+    <fragment
+        android:id="@+id/limitFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.LimitFragment"
+        android:label="fragment_limit"
+        tools:layout="@layout/fragment_limit" />
+</navigation>

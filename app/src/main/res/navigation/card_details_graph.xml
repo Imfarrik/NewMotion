@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trans_graph"
+    app:startDestination="@id/cardInfoFragment">
+
+    <fragment
+        android:id="@+id/cardInfoFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardInfoFragment"
+        android:label="activity_card_holder"
+        tools:layout="@layout/fragment_card_info">
+        <argument
+            android:name="myArg"
+            android:defaultValue="Hey!"
+            app:argType="string" />
+        <argument
+            android:name="myArgPos"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_cardInfoFragment_to_limitFragment2"
+            app:destination="@id/limitFragment2" />
+        <action
+            android:id="@+id/action_cardInfoFragment_to_cardOptionsFragment"
+            app:destination="@id/cardOptionsFragment"
+            app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/limitFragment2"
+        android:name="com.example.myapplicationnewmotion.fragments.LimitFragment"
+        android:label="fragment_limit"
+        tools:layout="@layout/fragment_limit" />
+    <dialog
+        android:id="@+id/cardOptionsFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardOptionsFragment"
+        android:label="fragment_card_options"
+        tools:layout="@layout/fragment_card_options" />
+
+</navigation>

@@ -1,7 +1,6 @@
 package com.example.myapplicationnewmotion.activities
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -10,12 +9,13 @@ import androidx.core.view.updatePadding
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.ActivityMainBinding
-import com.example.myapplicationnewmotion.navigator.Navigator
 
 
-class MainActivity : AppCompatActivity(), Navigator {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -35,78 +35,17 @@ class MainActivity : AppCompatActivity(), Navigator {
             insets
         }
 
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController
+
         val bottomNavigationView = binding.bottomNavigationView
-        navController = findNavController(R.id.fragmentContainerView)
-        navController.setGraph(R.navigation.main_bottom_nav_graph)
+        bottomNavigationView.setupWithNavController(navController)
 
         bottomNavigationView.background = null
         bottomNavigationView.itemRippleColor = null
-
-        val options = NavOptions.Builder()
-            .setLaunchSingleTop(true)
-            .setEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
-            .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
-            .setPopExitAnim(androidx.appcompat.R.anim.abc_slide_out_bottom)
-            .setPopUpTo(navController.graph.startDestinationId, false)
-            .build()
-
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.mainPage -> {
-                    navController.navigate(R.id.mainPage, null, options)
-                }
-                R.id.transactionsFragment -> {
-                    navController.navigate(R.id.transactionsFragment, null, options)
-                }
-                R.id.payFragment -> {
-                    navController.navigate(R.id.payFragment, null, options)
-                }
-                R.id.settingsFragment -> {
-                    navController.navigate(R.id.settingsFragment, null, options)
-                }
-            }
-            true
-        }
-
-        bottomNavigationView.setOnItemReselectedListener {
-            return@setOnItemReselectedListener
-        }
-
     }
 
-    override fun hideBottomNavBar(a: Boolean) {
-        if (a) {
-            binding.bottomAppBar.visibility = View.GONE
-            binding.floatingBottom.visibility = View.GONE
-        } else {
-            binding.bottomAppBar.visibility = View.VISIBLE
-            binding.floatingBottom.visibility = View.VISIBLE
-        }
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-
-        val bottomNavigationView = binding.bottomNavigationView
-
-        if (R.id.mainPage != bottomNavigationView.selectedItemId) {
-            bottomNavigationView.selectedItemId = R.id.mainPage
-        }
-    }
-
-    override fun insets(view: View) {
-        return ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
-            val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
-            val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
-            view.updatePadding(top = statusBarHeight, bottom = navBarHeight)
-            insets
-        }
-    }
-
-    override fun onBack() {
-        onBackPressed()
-    }
 }
 
 

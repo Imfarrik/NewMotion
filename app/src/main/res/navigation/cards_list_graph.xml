@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cards_graph"
+    app:startDestination="@id/cardsFragment">
+
+    <fragment
+        android:id="@+id/cardsFragment"
+        android:name="com.example.myapplicationnewmotion.fragments.CardsListFragment"
+        android:label="fragment_cards"
+        tools:layout="@layout/fragment_cards">
+        <argument
+            android:name="cardsData"
+            android:defaultValue="Hey!"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

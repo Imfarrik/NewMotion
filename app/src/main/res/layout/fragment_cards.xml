@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
-    tools:context=".fragments.CardsFragment">
+    tools:context=".fragments.CardsListFragment">
 
     <ImageButton
         android:id="@+id/back_button_cards_fragment"
@@ -42,13 +42,13 @@
         app:layout_constraintTop_toBottomOf="@id/transaction_tab"
         app:layout_constraintVertical_bias="1.0">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycle_item_cards"
-            android:layout_width="370dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:clipToPadding="false"
-            android:orientation="vertical" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycle_item_cards"
+                android:layout_width="370dp"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"/>
 
 
     </ScrollView>

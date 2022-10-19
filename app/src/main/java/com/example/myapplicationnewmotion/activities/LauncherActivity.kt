@@ -1,8 +1,10 @@
 package com.example.myapplicationnewmotion.activities
 
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.databinding.ActivityLauncherBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
 
@@ -49,7 +51,6 @@ class LauncherActivity : AppCompatActivity() {
     }
 
     companion object {
-        @JvmStatic
-        val TAG = LauncherActivity::class.simpleName
+        @JvmStatic val TAG = LauncherActivity::class.simpleName
     }
 }

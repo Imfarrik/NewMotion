@@ -3,14 +3,12 @@ package com.example.myapplicationnewmotion.navigator
 import android.content.Context
 import android.content.Intent
 import android.view.View
-import androidx.fragment.app.Fragment
-import com.example.myapplicationnewmotion.activities.CardHolderActivity
-import com.example.myapplicationnewmotion.activities.ContainerActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
+import com.example.myapplicationnewmotion.activities.CardInfoContainerActivity
+import com.example.myapplicationnewmotion.activities.CardListContainerActivity
 import com.example.myapplicationnewmotion.activities.MainActivity
-
-fun Fragment.navigator(): Navigator {
-    return requireActivity() as Navigator
-}
 
 interface Navigator {
 
@@ -25,25 +23,28 @@ interface Navigator {
             context?.startActivity(intent)
         }
 
-        fun startCardHolderActivity(context: Context?, dataString: String, dataInt: Int) {
-            val intent = Intent(context, CardHolderActivity::class.java)
+        fun startCardInfoContainerActivity(context: Context?, dataString: String, dataInt: Int) {
+            val intent = Intent(context, CardInfoContainerActivity::class.java)
             intent.putExtra(MY_ARG, dataString)
             intent.putExtra(MY_ARG_POS, dataInt)
             context?.startActivity(intent)
         }
 
-        fun startContainerActivity(context: Context?, dataString: String) {
-            val intent = Intent(context, ContainerActivity::class.java)
+        fun startCardListContainerActivity(context: Context?, dataString: String) {
+            val intent = Intent(context, CardListContainerActivity::class.java)
             intent.putExtra(CARDS_DATA, dataString)
             context?.startActivity(intent)
 
         }
 
+        fun insets(view: View) {
+            ViewCompat.setOnApplyWindowInsetsListener(view) { _, insets ->
+                val statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.statusBars()).top
+                val navBarHeight = insets.getInsets(WindowInsetsCompat.Type.navigationBars()).bottom
+                view.updatePadding(top = statusBarHeight, bottom = navBarHeight)
+                insets
+            }
+        }
+
     }
-
-    fun insets(view: View)
-
-    fun onBack()
-
-    fun hideBottomNavBar(a: Boolean)
 }
