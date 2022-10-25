@@ -1,6 +1,6 @@
 package com.example.myapplicationnewmotion.dataModel
 
 data class DataCardDetails(
-    val data: ArrayList<Data>?,
+    val data: List<Data>?,
     val success: Boolean
 )

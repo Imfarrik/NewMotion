@@ -1,18 +1,20 @@
 package com.example.myapplicationnewmotion.service
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ServiceBuilder {
 
-    companion object{
+    companion object {
         const val URL_ADDRESS = "http://165.22.196.62:8088/"
     }
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(HeaderInterceptor())
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .connectTimeout(10000, TimeUnit.MILLISECONDS)
         .build()
 

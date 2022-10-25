@@ -1,9 +1,11 @@
 package com.example.myapplicationnewmotion.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
@@ -13,9 +15,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.R
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
+import com.example.myapplicationnewmotion.dataModel.Data
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardInfoBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -41,6 +45,7 @@ class CardInfoFragment : Fragment() {
 
         val myAdapter = AdapterCardInfo(getBundleArrayData(arg!!)) { _, _ -> }
 
+
         binding.let {
             it.backButton.setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
 
@@ -61,7 +66,7 @@ class CardInfoFragment : Fragment() {
                                 .setExitAnim(androidx.appcompat.R.anim.abc_fade_out)
                                 .setPopEnterAnim(androidx.appcompat.R.anim.abc_slide_in_bottom)
                                 .setPopExitAnim(androidx.appcompat.R.anim.abc_fade_out)
-                                .build()
+                                .build(),
                         )
                     }
                     R.id.operations -> {
@@ -70,6 +75,10 @@ class CardInfoFragment : Fragment() {
                         )
 //                    activity?.supportFragmentManager?.beginTransaction()
 //                        ?.add(R.id.fragmentContainerView2, CardOptionsFragment())?.addToBackStack(null)?.commit()
+                    }
+                    R.id.actions_menu_detail -> {
+
+
                     }
                 }
                 true
@@ -93,8 +102,8 @@ class CardInfoFragment : Fragment() {
         }
     }
 
-    private fun getBundleArrayData(arg: String): ArrayList<DataCardInfo> {
-        val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
+    private fun getBundleArrayData(arg: String): List<Data> {
+        val listType = object : TypeToken<List<Data?>?>() {}.type
         return Gson().fromJson(arg, listType)
     }
 

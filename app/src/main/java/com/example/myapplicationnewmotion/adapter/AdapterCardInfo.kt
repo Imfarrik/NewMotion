@@ -3,11 +3,12 @@ package com.example.myapplicationnewmotion.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplicationnewmotion.dataModel.Data
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.RecycleItemCardInfoBinding
 
 class AdapterCardInfo(
-    private val value: ArrayList<DataCardInfo>, private val listener: (DataCardInfo, Int) -> Unit
+    private val value: List<Data>, private val listener: (Data, Int) -> Unit
 ) : RecyclerView.Adapter<AdapterCardInfo.MyViewHolder>() {
 
 
@@ -20,8 +21,8 @@ class AdapterCardInfo(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = value[position]
-        holder.balance.text = item.cardBalance
-        holder.disc.text = item.cardDescription
+        holder.balance.text = item.cardBalance.toString()
+        holder.disc.text = item.contractTypeGroupName
 
         holder.initView(item, position)
     }
@@ -35,7 +36,7 @@ class AdapterCardInfo(
         val balance = binding.cardBalance
         val disc = binding.testIdText
 
-        fun initView(item:DataCardInfo, position: Int) {
+        fun initView(item:Data, position: Int) {
             itemView.setOnClickListener {
                 listener(item, position)
             }

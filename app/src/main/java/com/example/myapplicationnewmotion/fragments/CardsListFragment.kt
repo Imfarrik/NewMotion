@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.adapter.AdapterCardInfo
+import com.example.myapplicationnewmotion.dataModel.Data
 import com.example.myapplicationnewmotion.dataModel.DataCardInfo
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
 import com.example.myapplicationnewmotion.navigator.Navigator
@@ -48,12 +49,12 @@ class CardsListFragment : Fragment() {
 
     }
 
-    private fun getBundleArrayData(arg: String): ArrayList<DataCardInfo> {
-        val listType = object : TypeToken<ArrayList<DataCardInfo?>?>() {}.type
+    private fun getBundleArrayData(arg: String): List<Data> {
+        val listType = object : TypeToken<List<Data?>?>() {}.type
         return Gson().fromJson(arg, listType)
     }
 
-    private fun sendData(argString: ArrayList<DataCardInfo>, argInt: Int) {
+    private fun sendData(argString: List<Data>, argInt: Int) {
         val toJson = Gson().toJson(argString)
         Navigator.startCardInfoContainerActivity(context, toJson, argInt)
     }
