@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/main_bg"
     app:layoutDescription="@xml/activity_main_scene"
-    tools:context=".fragments.MainFragment">
+    tools:context=".presentation.main.MainFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"

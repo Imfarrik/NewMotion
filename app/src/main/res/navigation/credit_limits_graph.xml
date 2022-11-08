@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/limitFragment"
-        android:name="com.example.myapplicationnewmotion.fragments.LimitFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.fragment.LimitFragment"
         android:label="fragment_limit"
         tools:layout="@layout/fragment_limit" />
 </navigation>

@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.myapplicationnewmotion">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
+            android:name=".di.App"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -15,15 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplicationNewMotion"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activities.CardListContainerActivity"
+            android:name=".presentation.auth.AuthActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".presentation.containersActivity.CardListContainerActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.CardInfoContainerActivity"
+            android:name=".presentation.containersActivity.CardInfoContainerActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LauncherActivity"
+            android:name=".presentation.containersActivity.LauncherActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplicationNewMotion.Launcher">
             <intent-filter>
@@ -33,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".presentation.containersActivity.MainActivity"
             android:exported="false" />
     </application>
 

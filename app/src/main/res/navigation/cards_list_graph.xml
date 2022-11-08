@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.example.myapplicationnewmotion.fragments.CardsListFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.cardList.CardsListFragment"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_cards">
         <argument
