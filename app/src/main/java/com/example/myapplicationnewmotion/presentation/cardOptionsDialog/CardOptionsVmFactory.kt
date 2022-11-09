@@ -1,15 +1,15 @@
-package com.example.myapplicationnewmotion.helper
+package com.example.myapplicationnewmotion.presentation.cardOptionsDialog
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplicationnewmotion.presentation.auth.AuthViewModel
 import javax.inject.Inject
 
-class NewVmFactory @Inject constructor(private val authViewModel: AuthViewModel) : ViewModelProvider.Factory {
+class CardOptionsVmFactory (private val cardOptionsViewModel: CardOptionsViewModel) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(AuthViewModel::class.java)) {
-            return authViewModel as T
+        if (modelClass.isAssignableFrom(CardOptionsViewModel::class.java)) {
+            return cardOptionsViewModel as T
         }
         throw IllegalStateException("unknown class name")
     }

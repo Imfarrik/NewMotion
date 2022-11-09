@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.cardList.ViewPagerFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.cardItemDetails.ViewPagerFragment"
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager">
         <argument
@@ -71,8 +71,7 @@
             app:destination="@id/limitFragment2" />
         <action
             android:id="@+id/action_cardInfoFragment_to_cardOptionsFragment"
-            app:destination="@id/cardOptionsFragment"
-            app:launchSingleTop="true" />
+            app:destination="@id/cardOptionsFragment" />
     </fragment>
     <fragment
         android:id="@+id/bankAccountDetailsFragment"

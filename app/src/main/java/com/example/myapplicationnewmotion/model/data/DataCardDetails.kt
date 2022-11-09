@@ -1,4 +1,4 @@
-package com.example.myapplicationnewmotion.dataModel.data
+package com.example.myapplicationnewmotion.model.data
 
 data class DataCardDetails(
     val data: List<Data>?,

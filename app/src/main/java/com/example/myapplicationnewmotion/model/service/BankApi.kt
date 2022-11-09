@@ -1,6 +1,6 @@
-package com.example.myapplicationnewmotion.dataModel.service
+package com.example.myapplicationnewmotion.model.service
 
-import com.example.myapplicationnewmotion.dataModel.data.*
+import com.example.myapplicationnewmotion.model.data.*
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call

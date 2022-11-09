@@ -2,13 +2,12 @@ package com.example.myapplicationnewmotion.presentation.auth
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplicationnewmotion.dataModel.data.GetToken
-import com.example.myapplicationnewmotion.helper.apiService.ApiServiceImpl
-import com.example.myapplicationnewmotion.dataModel.service.SessionManager
+import com.example.myapplicationnewmotion.model.data.GetToken
+import com.example.myapplicationnewmotion.model.service.SessionManager
+import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import io.reactivex.rxjava3.disposables.CompositeDisposable
-import javax.inject.Inject
 
-class AuthViewModel @Inject constructor(
+class AuthViewModel(
     private val sessionManager: SessionManager,
     private val mApiServiceImpl: ApiServiceImpl
 ) : ViewModel() {

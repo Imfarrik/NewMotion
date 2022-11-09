@@ -1,20 +1,18 @@
-package com.example.myapplicationnewmotion.helper.apiService
+package com.example.myapplicationnewmotion.domain.apiService
 
-import android.content.Context
-import com.example.myapplicationnewmotion.dataModel.data.Data
-import com.example.myapplicationnewmotion.dataModel.data.DataCardDetails
-import com.example.myapplicationnewmotion.dataModel.data.GetToken
-import com.example.myapplicationnewmotion.dataModel.data.SignIn
-import com.example.myapplicationnewmotion.dataModel.service.RetrofitRxJavaBuilder
+import com.example.myapplicationnewmotion.model.data.Data
+import com.example.myapplicationnewmotion.model.data.DataCardDetails
+import com.example.myapplicationnewmotion.model.data.GetToken
+import com.example.myapplicationnewmotion.model.data.SignIn
+import com.example.myapplicationnewmotion.model.service.RetrofitRxJavaBuilder
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import javax.inject.Inject
 
-class ApiServiceImpl @Inject constructor(context: Context) : ApiService {
+class ApiServiceImpl(retrofitRxJavaBuilder: RetrofitRxJavaBuilder) : ApiService {
 
-    private val mBankApi = RetrofitRxJavaBuilder().retrofit(context)
+    private val mBankApi = retrofitRxJavaBuilder.retrofit()
 
     override fun auth(password: String, login: String): Single<GetToken> {
         return mBankApi.getToken(SignIn(password, login))

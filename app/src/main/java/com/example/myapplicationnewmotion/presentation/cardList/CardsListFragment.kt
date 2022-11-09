@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplicationnewmotion.helper.adapter.AdapterCardInfo
-import com.example.myapplicationnewmotion.dataModel.data.Data
+import com.example.myapplicationnewmotion.domain.adapter.AdapterCardInfo
+import com.example.myapplicationnewmotion.model.data.Data
 import com.example.myapplicationnewmotion.databinding.FragmentCardsBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.domain.Navigator
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

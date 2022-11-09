@@ -7,24 +7,23 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.myapplicationnewmotion.dataModel.data.Data
-import com.example.myapplicationnewmotion.helper.VmFactory
 import com.example.myapplicationnewmotion.databinding.FragmentCardOptionsBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.Navigator
+import com.example.myapplicationnewmotion.model.data.Data
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import javax.inject.Inject
 
 class CardOptionsFragment : BottomSheetDialogFragment() {
 
+    @Inject
+    lateinit var vmFactory: CardOptionsVmFactory
     private lateinit var binding: FragmentCardOptionsBinding
-    private val viewModel: CardOptionsViewModel by viewModels() { VmFactory(requireContext()) }
-    private val arg = arguments?.getString(Navigator.MY_ARG)
-    private val argPos = arguments?.getInt(Navigator.MY_ARG_POS)
-    private val dataList = getBundleArrayData(arg!!)
-    private val cardData = dataList[argPos!!]
+    private val viewModel: CardOptionsViewModel by viewModels { vmFactory }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?, ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCardOptionsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -32,19 +31,28 @@ class CardOptionsFragment : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val arg = arguments?.getString(Navigator.MY_ARG)
+        val argPos = arguments?.getInt(Navigator.MY_ARG_POS)
+        val dataList = getBundleArrayData(arg!!)
+        val cardData = dataList[argPos!!]
+
+        (activity?.applicationContext as App).appComponent.inject(this)
+
         Navigator.insets(binding.root)
 
-        initView()
+        initView(cardData, arg, argPos)
 
     }
 
-    private fun initView() = with(binding) {
+    private fun initView(cardData: Data, arg: String, argPos: Int) = with(binding) {
         cardNumber.setOnClickListener {
             toast(cardData.cardNumber!!)
         }
         cardInfo.setOnClickListener {
-            findNavController().navigate(CardOptionsFragmentDirections.actionCardOptionsToBankAccountDetailsFragment(arg!!, argPos!!),
-                Navigator.navOptions())
+            findNavController().navigate(
+                CardOptionsFragmentDirections.actionCardOptionsToBankAccountDetailsFragment(arg, argPos),
+                Navigator.navOptions()
+            )
         }
         deleteCard.setOnClickListener {
             viewModel.removeCardById(cardData.cardId!!)

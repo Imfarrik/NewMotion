@@ -1,4 +1,4 @@
-package com.example.myapplicationnewmotion.dataModel.service
+package com.example.myapplicationnewmotion.model.service
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -10,8 +10,7 @@ class SessionManager(context: Context) {
         const val PREFERENCE_NAME = "share_token"
     }
 
-    private var preferences: SharedPreferences =
-        context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
+    private var preferences: SharedPreferences = context.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE)
 
     fun saveAuthToken(token: String) {
         val editor = preferences.edit()

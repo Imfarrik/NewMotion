@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.myapplicationnewmotion.databinding.FragmentLimitBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.domain.Navigator
 
 class LimitFragment : Fragment() {
     private lateinit var binding: FragmentLimitBinding

@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.myapplicationnewmotion.databinding.ActivityLauncherBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.domain.Navigator
 
 class LauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

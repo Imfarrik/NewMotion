@@ -1,9 +1,9 @@
-package com.example.myapplicationnewmotion.helper.adapter
+package com.example.myapplicationnewmotion.domain.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.dataModel.data.Data
+import com.example.myapplicationnewmotion.model.data.Data
 import com.example.myapplicationnewmotion.databinding.RecycleItemCardInfoBinding
 
 class AdapterCardInfo(

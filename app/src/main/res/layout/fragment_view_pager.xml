@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/card_info_bg"
-    tools:context=".presentation.cardList.ViewPagerFragment"
+    tools:context=".presentation.cardItemDetails.ViewPagerFragment"
     app:layoutDescription="@xml/fragment_view_pager_scene">
 
     <androidx.constraintlayout.widget.ConstraintLayout

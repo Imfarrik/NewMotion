@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.myapplicationnewmotion.databinding.FragmentSettingsBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.domain.Navigator
 
 class SettingsFragment : Fragment() {
 

@@ -7,20 +7,25 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.example.myapplicationnewmotion.databinding.ActivityAuthBinding
-import com.example.myapplicationnewmotion.di.AppModule
-import com.example.myapplicationnewmotion.di.DaggerAppComponent
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.Navigator
+import javax.inject.Inject
 
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding
-    private val viewModel: AuthViewModel by viewModels { DaggerAppComponent.builder().appModule(AppModule(this)).build().inject() }
+
+    @Inject
+    lateinit var vmFactory: AuthVmFactory
+    private val viewModel: AuthViewModel by viewModels { vmFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
 
+        (applicationContext as App).appComponent.inject(this)
         setContentView(binding.root)
+
         insets()
         initView()
         initLiveDataObservers()

@@ -1,18 +1,18 @@
-package com.example.myapplicationnewmotion.presentation.cardList
+package com.example.myapplicationnewmotion.presentation.cardItemDetails
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.myapplicationnewmotion.helper.adapter.PagerAdapter
-import com.example.myapplicationnewmotion.helper.adapter.TaskPageTransformer
-import com.example.myapplicationnewmotion.dataModel.data.Data
+import com.example.myapplicationnewmotion.model.data.Data
 import com.example.myapplicationnewmotion.databinding.FragmentViewPagerBinding
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.domain.Navigator
+import com.example.myapplicationnewmotion.domain.adapter.PagerAdapter
+import com.example.myapplicationnewmotion.domain.adapter.TaskPageTransformer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 

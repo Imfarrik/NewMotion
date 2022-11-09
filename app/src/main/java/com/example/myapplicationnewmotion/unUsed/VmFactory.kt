@@ -1,35 +1,33 @@
-package com.example.myapplicationnewmotion.helper
+package com.example.myapplicationnewmotion.unUsed
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.myapplicationnewmotion.dataModel.service.SessionManager
-import com.example.myapplicationnewmotion.helper.apiService.ApiServiceImpl
 import com.example.myapplicationnewmotion.presentation.auth.AuthViewModel
 import com.example.myapplicationnewmotion.presentation.bankAccountDetails.BankAccountDetailsViewModel
 import com.example.myapplicationnewmotion.presentation.cardOptionsDialog.CardOptionsViewModel
 import com.example.myapplicationnewmotion.presentation.main.MainFragmentViewModel
+import javax.inject.Inject
 
-class VmFactory(
-    private val context: Context
+class VmFactory @Inject constructor(
+    val viewModel: ViewModel
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val vModel = when (modelClass) {
             AuthViewModel::class.java -> {
-                AuthViewModel(SessionManager(context), ApiServiceImpl(context))
+                viewModel
             }
             MainFragmentViewModel::class.java -> {
-                MainFragmentViewModel(ApiServiceImpl(context))
+                viewModel
             }
             BankAccountDetailsViewModel::class.java -> {
-                BankAccountDetailsViewModel(ApiServiceImpl(context))
+                viewModel
             }
             CardOptionsViewModel::class.java -> {
-                CardOptionsViewModel(ApiServiceImpl(context))
+                viewModel
             }
             else -> {
-            throw IllegalStateException("Unknown ViewModel Class")
+                throw IllegalStateException("Unknown ViewModel Class")
             }
         }
         return vModel as T

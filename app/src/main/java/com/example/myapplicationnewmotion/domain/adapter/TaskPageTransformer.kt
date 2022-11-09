@@ -1,4 +1,4 @@
-package com.example.myapplicationnewmotion.helper.adapter
+package com.example.myapplicationnewmotion.domain.adapter
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2

@@ -1,14 +1,15 @@
-package com.example.myapplicationnewmotion.dataModel.service
+package com.example.myapplicationnewmotion.unUsed
 
 import android.content.Context
+import com.example.myapplicationnewmotion.model.service.BankApi
+import com.example.myapplicationnewmotion.model.service.HeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitRxJavaBuilder {
+class ServiceBuilder {
 
     companion object {
         const val URL_ADDRESS = "http://165.22.196.62:8088/"
@@ -23,12 +24,16 @@ class RetrofitRxJavaBuilder {
     }
 
     fun retrofit(context: Context): BankApi {
-        val retrofitRxJavaBuilder = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             .baseUrl(URL_ADDRESS)
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(client(context))
             .build()
-        return retrofitRxJavaBuilder.create(BankApi::class.java)
+        return retrofit.create(BankApi::class.java)
     }
+
+//    fun <T> buildService(serviceType: Class<T>): T {
+//        return retrofit.create(serviceType)
+//    }
+
 }

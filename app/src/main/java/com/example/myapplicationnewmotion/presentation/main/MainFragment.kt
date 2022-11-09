@@ -7,20 +7,21 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplicationnewmotion.helper.VmFactory
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
-import com.example.myapplicationnewmotion.helper.adapter.MyAdapter
-import com.example.myapplicationnewmotion.helper.Navigator
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.Navigator
 import com.google.gson.Gson
-
+import javax.inject.Inject
+import com.example.myapplicationnewmotion.domain.adapter.MyAdapter as MyAdapter1
 
 class MainFragment : Fragment() {
 
+    @Inject
+    lateinit var vmFactory: MainFragmentVmFactory
     private lateinit var binding: FragmentMainBinding
-    private var myAdapter: MyAdapter? = null
-    private val viewModel: MainFragmentViewModel by viewModels() { VmFactory(requireContext()) }
+    private var myAdapter: MyAdapter1? = null
+    private val viewModel: MainFragmentViewModel by viewModels { vmFactory }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -29,6 +30,8 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity?.applicationContext as App).appComponent.inject(this)
 
         Navigator.insets(binding.root)
 
@@ -39,27 +42,27 @@ class MainFragment : Fragment() {
         initView()
     }
 
-    private fun adapterVal(): MyAdapter {
-        return MyAdapter() { cardList, _, pos ->
+    private fun adapterVal(): MyAdapter1 {
+        return MyAdapter1 { cardList, _, pos ->
             val cardData = Gson().toJson(cardList)
             Navigator.startCardInfoContainerActivity(context, cardData, pos)
         }
     }
 
     private fun initLiveDataObserver() = with(binding) {
-        viewModel.dataCardDetailsLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.dataCardDetailsLiveData.observe(viewLifecycleOwner) {
             myAdapter?.setCardList(it.data ?: listOf())
-        })
+        }
 
-        viewModel.isSuccessLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.isSuccessLiveData.observe(viewLifecycleOwner) {
             if (!it) setToast()
-        })
+        }
     }
 
     private fun setToast() {
-        viewModel.errorLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.errorLiveData.observe(viewLifecycleOwner) {
             Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT).show()
-        })
+        }
     }
 
     private fun initView() = with(binding) {

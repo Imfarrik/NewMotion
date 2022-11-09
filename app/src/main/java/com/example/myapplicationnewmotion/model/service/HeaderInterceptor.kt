@@ -1,4 +1,4 @@
-package com.example.myapplicationnewmotion.dataModel.service
+package com.example.myapplicationnewmotion.model.service
 
 import android.content.Context
 import okhttp3.Interceptor

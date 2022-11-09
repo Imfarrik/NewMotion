@@ -2,8 +2,8 @@ package com.example.myapplicationnewmotion.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplicationnewmotion.dataModel.data.DataCardDetails
-import com.example.myapplicationnewmotion.helper.apiService.ApiServiceImpl
+import com.example.myapplicationnewmotion.model.data.DataCardDetails
+import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class MainFragmentViewModel(

@@ -1,4 +1,4 @@
-package com.example.myapplicationnewmotion.helper
+package com.example.myapplicationnewmotion.domain
 
 import android.content.Context
 import android.content.Intent
