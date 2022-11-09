@@ -1,8 +1,8 @@
 package com.example.myapplicationnewmotion.di
 
-import com.example.myapplicationnewmotion.model.service.RetrofitRxJavaBuilder
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
+import com.example.myapplicationnewmotion.model.service.BankApi
 import dagger.Module
 import dagger.Provides
 
@@ -10,8 +10,8 @@ import dagger.Provides
 class DomainModule {
 
     @Provides
-    fun providerApiServiceImpl(retrofitRxJavaBuilder: RetrofitRxJavaBuilder): ApiServiceImpl {
-        return ApiServiceImpl(retrofitRxJavaBuilder)
+    fun providerApiServiceImpl(bankApi: BankApi): ApiServiceImpl {
+        return ApiServiceImpl(bankApi)
     }
 
     @Provides

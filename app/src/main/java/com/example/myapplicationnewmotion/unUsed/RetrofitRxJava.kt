@@ -1,5 +1,7 @@
-package com.example.myapplicationnewmotion.model.service
+package com.example.myapplicationnewmotion.unUsed
 
+import com.example.myapplicationnewmotion.model.service.BankApi
+import com.example.myapplicationnewmotion.model.service.HeaderInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,7 +9,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitRxJavaBuilder(private val headerInterceptor: HeaderInterceptor) {
+class RetrofitRxJava(private val headerInterceptor: HeaderInterceptor) {
 
     companion object {
         const val URL_ADDRESS = "http://165.22.196.62:8088/"

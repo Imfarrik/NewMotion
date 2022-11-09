@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.myapplicationnewmotion.model.data.GetToken
 import com.example.myapplicationnewmotion.model.service.SessionManager
 import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
+import com.example.myapplicationnewmotion.model.service.BankApi
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 class AuthViewModel(
@@ -41,6 +42,7 @@ class AuthViewModel(
     // http
 
     private fun auth(login: String, password: String) {
+
         progress.value = true
         compositeDisposable.add(mApiServiceImpl.auth(password, login).subscribe({
             if (it.success) {
