@@ -7,8 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.example.myapplicationnewmotion.databinding.ActivityAuthBinding
-import com.example.myapplicationnewmotion.di.App
-import com.example.myapplicationnewmotion.domain.Navigator
+import com.example.myapplicationnewmotion.presentation.Navigator
 
 class AuthActivity : AppCompatActivity() {
 
@@ -20,7 +19,6 @@ class AuthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
 
-        App.getAppComponent().inject(this)
         setContentView(binding.root)
 
         insets()

@@ -2,10 +2,10 @@ package com.example.myapplicationnewmotion.presentation.auth
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
-import com.example.myapplicationnewmotion.model.data.GetToken
-import com.example.myapplicationnewmotion.model.service.SharedPreferencesManager
+import com.example.myapplicationnewmotion.domain.apiService.model.GetToken
+import com.example.myapplicationnewmotion.domain.shared_pref.SharedPreferencesManager
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import javax.inject.Inject
 

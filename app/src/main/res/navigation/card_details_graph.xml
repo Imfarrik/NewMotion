@@ -31,13 +31,13 @@
     <!--    </fragment>-->
     <fragment
         android:id="@+id/limitFragment2"
-        android:name="com.example.myapplicationnewmotion.presentation.fragment.LimitFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.card.limit.LimitFragment"
         android:label="fragment_limit"
         tools:layout="@layout/fragment_limit" />
 
     <dialog
         android:id="@+id/cardOptionsFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.cardOptionsDialog.CardOptionsFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.card.info.dialog.CardActionDialogFragment"
         android:label="fragment_card_options"
         tools:layout="@layout/fragment_card_options">
         <argument
@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.cardItemDetails.ViewPagerFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.card.info.CardInfoFragment"
         android:label="fragment_view_pager"
         tools:layout="@layout/fragment_view_pager">
         <argument
@@ -75,7 +75,7 @@
     </fragment>
     <fragment
         android:id="@+id/bankAccountDetailsFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.bankAccountDetails.BankAccountDetailsFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.card.requisite.CardRequisiteFragment"
         android:label="fragment_bank_account_details"
         tools:layout="@layout/fragment_bank_account_details">
         <argument

@@ -7,23 +7,23 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.main.MainFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.main.home.MainHomeFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
     </fragment>
     <fragment
         android:id="@+id/transactionsFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.fragment.TransactionsFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.main.p2p.MainP2PFragment"
         android:label="fragment_transactions"
         tools:layout="@layout/fragment_transactions" />
     <fragment
         android:id="@+id/payFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.fragment.PayFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.main.payment.MainPaymentFragment"
         android:label="fragment_pay"
         tools:layout="@layout/fragment_pay" />
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.myapplicationnewmotion.presentation.fragment.SettingsFragment"
+        android:name="com.example.myapplicationnewmotion.presentation.main.setting.MainSettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 

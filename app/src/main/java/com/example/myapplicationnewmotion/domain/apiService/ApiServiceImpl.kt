@@ -1,10 +1,9 @@
 package com.example.myapplicationnewmotion.domain.apiService
 
-import com.example.myapplicationnewmotion.model.data.Data
-import com.example.myapplicationnewmotion.model.data.DataCardDetails
-import com.example.myapplicationnewmotion.model.data.GetToken
-import com.example.myapplicationnewmotion.model.data.SignIn
-import com.example.myapplicationnewmotion.model.service.BankApi
+import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetails
+import com.example.myapplicationnewmotion.domain.apiService.model.GetToken
+import com.example.myapplicationnewmotion.domain.apiService.model.SignIn
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single

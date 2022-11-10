@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".di.App"
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -25,13 +25,13 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".presentation.containersActivity.CardListContainerActivity"
+            android:name=".presentation.card.list.CardListActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.containersActivity.CardInfoContainerActivity"
+            android:name=".presentation.card.info.CardInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.containersActivity.LauncherActivity"
+            android:name=".presentation.LauncherActivity"
             android:exported="true"
             android:theme="@style/Theme.MyApplicationNewMotion.Launcher">
             <intent-filter>
@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.containersActivity.MainActivity"
+            android:name=".presentation.main.MainActivity"
             android:exported="false" />
     </application>
 
