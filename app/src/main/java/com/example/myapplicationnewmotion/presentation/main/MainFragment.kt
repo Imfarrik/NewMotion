@@ -9,19 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
-import com.example.myapplicationnewmotion.di.App
 import com.example.myapplicationnewmotion.domain.Navigator
 import com.google.gson.Gson
-import javax.inject.Inject
 import com.example.myapplicationnewmotion.domain.adapter.MyAdapter as MyAdapter1
 
 class MainFragment : Fragment() {
 
-    @Inject
-    lateinit var vmFactory: MainFragmentVmFactory
     private lateinit var binding: FragmentMainBinding
     private var myAdapter: MyAdapter1? = null
-    private val viewModel: MainFragmentViewModel by viewModels { vmFactory }
+    private val viewModel: MainFragmentViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
@@ -30,8 +26,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (activity?.applicationContext as App).appComponent.inject(this)
 
         Navigator.insets(binding.root)
 

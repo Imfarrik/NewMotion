@@ -7,19 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.myapplicationnewmotion.model.data.Data
 import com.example.myapplicationnewmotion.databinding.FragmentBankAccountDetailsBinding
-import com.example.myapplicationnewmotion.di.App
 import com.example.myapplicationnewmotion.domain.Navigator
-import javax.inject.Inject
+import com.example.myapplicationnewmotion.model.data.Data
 
 class BankAccountDetailsFragment : Fragment() {
 
-    @Inject
-    lateinit var vmFactory: BankAccountDetailsVmFactory
-
     private lateinit var binding: FragmentBankAccountDetailsBinding
-    private val viewModel: BankAccountDetailsViewModel by viewModels { vmFactory }
+    private val viewModel: BankAccountDetailsViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentBankAccountDetailsBinding.inflate(inflater)
@@ -28,8 +23,6 @@ class BankAccountDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (activity?.applicationContext as App).appComponent.inject(this)
 
         Navigator.insets(binding.root)
 

@@ -3,7 +3,7 @@ package com.example.myapplicationnewmotion.model.service
 import android.content.Context
 import android.content.SharedPreferences
 
-class SessionManager(context: Context) {
+class SharedPreferencesManager(context: Context) {
 
     companion object {
         const val USER_TOKEN = "user_token"

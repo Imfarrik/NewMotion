@@ -2,16 +2,20 @@ package com.example.myapplicationnewmotion.presentation.auth
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.model.data.GetToken
-import com.example.myapplicationnewmotion.model.service.SessionManager
-import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
-import com.example.myapplicationnewmotion.model.service.BankApi
+import com.example.myapplicationnewmotion.model.service.SharedPreferencesManager
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class AuthViewModel(
-    private val sessionManager: SessionManager,
-    private val mApiServiceImpl: ApiServiceImpl
-) : ViewModel() {
+class AuthViewModel : ViewModel() {
+
+    @Inject
+    lateinit var sharedPreferencesManager: SharedPreferencesManager
+
+    @Inject
+    lateinit var apiService: ApiService
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -23,6 +27,10 @@ class AuthViewModel(
 
     private val error = MutableLiveData<String>()
     val errorLiveData = error
+
+    init {
+        App.getAppComponent().inject(this)
+    }
 
     fun onAutoFillClicked() {
         // do something if needed, then send request
@@ -44,10 +52,10 @@ class AuthViewModel(
     private fun auth(login: String, password: String) {
 
         progress.value = true
-        compositeDisposable.add(mApiServiceImpl.auth(password, login).subscribe({
+        compositeDisposable.add(apiService.auth(password, login).subscribe({
             if (it.success) {
                 data.value = it
-                sessionManager.saveAuthToken(it.data.accessToken)
+                sharedPreferencesManager.saveAuthToken(it.data.accessToken)
             } else {
                 error.value = "Неправильно указан логин или пароль"
             }

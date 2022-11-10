@@ -2,13 +2,16 @@ package com.example.myapplicationnewmotion.presentation.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.model.data.DataCardDetails
-import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class MainFragmentViewModel(
-    private val mApiServiceImpl: ApiServiceImpl
-) : ViewModel() {
+class MainFragmentViewModel : ViewModel() {
+
+    @Inject
+    lateinit var apiService: ApiService
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -22,6 +25,7 @@ class MainFragmentViewModel(
     val errorLiveData = error
 
     init {
+        App.getAppComponent().inject(this)
         loadCardDetails()
     }
 
@@ -33,7 +37,7 @@ class MainFragmentViewModel(
     // HTTP
 
     private fun loadCardDetails() {
-        compositeDisposable.add(mApiServiceImpl.loadCardDetails().subscribe({
+        compositeDisposable.add(apiService.loadCardDetails().subscribe({
             if (it.success) {
                 isSuccess.value = true
                 dataCardDetails.value = it

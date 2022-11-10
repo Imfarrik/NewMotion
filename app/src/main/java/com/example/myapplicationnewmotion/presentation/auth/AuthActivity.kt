@@ -9,21 +9,18 @@ import androidx.core.view.WindowCompat
 import com.example.myapplicationnewmotion.databinding.ActivityAuthBinding
 import com.example.myapplicationnewmotion.di.App
 import com.example.myapplicationnewmotion.domain.Navigator
-import javax.inject.Inject
 
 class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding
 
-    @Inject
-    lateinit var vmFactory: AuthVmFactory
-    private val viewModel: AuthViewModel by viewModels { vmFactory }
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAuthBinding.inflate(layoutInflater)
 
-        (applicationContext as App).appComponent.inject(this)
+        App.getAppComponent().inject(this)
         setContentView(binding.root)
 
         insets()

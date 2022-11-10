@@ -1,12 +1,12 @@
 package com.example.myapplicationnewmotion.di
 
-import android.content.Context
+import com.example.myapplicationnewmotion.domain.apiService.ApiService
+import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import com.example.myapplicationnewmotion.model.service.BankApi
 import com.example.myapplicationnewmotion.model.service.HeaderInterceptor
-import com.example.myapplicationnewmotion.model.service.SessionManager
+import com.example.myapplicationnewmotion.model.service.SharedPreferencesManager
 import dagger.Module
 import dagger.Provides
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +16,11 @@ import java.util.concurrent.TimeUnit
 
 @Module
 class NetworkModule {
+
+    @Provides
+    fun providerApiService(bankApi: BankApi): ApiService {
+        return ApiServiceImpl(bankApi)
+    }
 
     @Provides
     fun providerBankApi(okHttpClient: OkHttpClient): BankApi {
@@ -29,20 +34,10 @@ class NetworkModule {
     }
 
     @Provides
-    fun provideOkHttpClient(headerInterceptor: HeaderInterceptor): OkHttpClient {
+    fun provideOkHttpClient(sharedPreferencesManager: SharedPreferencesManager): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(headerInterceptor)
+            .addInterceptor(HeaderInterceptor(sharedPreferencesManager))
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .connectTimeout(10000, TimeUnit.MILLISECONDS).build()
-    }
-
-    @Provides
-    fun providerSessionManager(context: Context): SessionManager {
-        return SessionManager(context)
-    }
-
-    @Provides
-    fun providerHeaderInterceptor(context: Context): HeaderInterceptor {
-        return HeaderInterceptor(context)
+            .connectTimeout(60000, TimeUnit.MILLISECONDS).build()
     }
 }

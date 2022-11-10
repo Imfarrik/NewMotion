@@ -2,15 +2,24 @@ package com.example.myapplicationnewmotion.presentation.cardOptionsDialog
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
+import com.example.myapplicationnewmotion.di.App
+import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import javax.inject.Inject
 
-class CardOptionsViewModel(private val mApiServiceImpl: ApiServiceImpl) : ViewModel() {
+class CardOptionsViewModel : ViewModel() {
+
+    @Inject
+    lateinit var apiService: ApiService
 
     private val compositeDisposable = CompositeDisposable()
 
     private val text = MutableLiveData<String>()
     val textLiveData = text
+
+    init {
+        App.getAppComponent().inject(this)
+    }
 
     override fun onCleared() {
         super.onCleared()
@@ -32,7 +41,7 @@ class CardOptionsViewModel(private val mApiServiceImpl: ApiServiceImpl) : ViewMo
     // HTTP
 
     private fun updateCardVal(value: Map<String, Any>) {
-        compositeDisposable.add(mApiServiceImpl.upDateCardVal(value).subscribe({
+        compositeDisposable.add(apiService.upDateCardVal(value).subscribe({
 
             text.value = "Успешно"
 
@@ -44,7 +53,7 @@ class CardOptionsViewModel(private val mApiServiceImpl: ApiServiceImpl) : ViewMo
     }
 
     private fun removeCard(id: Int) {
-        compositeDisposable.add(mApiServiceImpl.removeCard(id).subscribe({
+        compositeDisposable.add(apiService.removeCard(id).subscribe({
 
             text.value = "Карта удалена"
 

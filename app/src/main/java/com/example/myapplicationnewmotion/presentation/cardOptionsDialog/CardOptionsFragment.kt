@@ -8,20 +8,16 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplicationnewmotion.databinding.FragmentCardOptionsBinding
-import com.example.myapplicationnewmotion.di.App
 import com.example.myapplicationnewmotion.domain.Navigator
 import com.example.myapplicationnewmotion.model.data.Data
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import javax.inject.Inject
 
 class CardOptionsFragment : BottomSheetDialogFragment() {
 
-    @Inject
-    lateinit var vmFactory: CardOptionsVmFactory
     private lateinit var binding: FragmentCardOptionsBinding
-    private val viewModel: CardOptionsViewModel by viewModels { vmFactory }
+    private val viewModel: CardOptionsViewModel by viewModels()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCardOptionsBinding.inflate(inflater, container, false)
@@ -35,8 +31,6 @@ class CardOptionsFragment : BottomSheetDialogFragment() {
         val argPos = arguments?.getInt(Navigator.MY_ARG_POS)
         val dataList = getBundleArrayData(arg!!)
         val cardData = dataList[argPos!!]
-
-        (activity?.applicationContext as App).appComponent.inject(this)
 
         Navigator.insets(binding.root)
 
