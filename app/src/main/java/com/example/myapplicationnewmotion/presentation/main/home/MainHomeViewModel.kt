@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
-import com.example.myapplicationnewmotion.domain.apiService.model.LocalDB
 import com.example.myapplicationnewmotion.room.CardDetailedInfoDB
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
@@ -55,7 +54,6 @@ class MainHomeViewModel : ViewModel() {
             viewModelScope.launch {
                 cardDetailedInfoDB.getCardDetailedInfoDao().upsert(it.data!!)
                 dataCardDetails.postValue(cardDetailedInfoDB.getCardDetailedInfoDao().getAll())
-                LocalDB().dataCardDetails.postValue(cardDetailedInfoDB.getCardDetailedInfoDao().getAll())
             }
 
         }, {
