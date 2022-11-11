@@ -12,7 +12,7 @@ import retrofit2.http.*
 interface BankApi {
 
     @GET("card/all")
-    fun getCardsVal(): Observable<DataCardDetails>
+    fun getCardList(): Observable<DataCardDetails>
 
     @PUT("card/update")
     @JvmSuppressWildcards

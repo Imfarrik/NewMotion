@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
-import com.example.myapplicationnewmotion.room.CardDetailedInfoDB
+import com.example.myapplicationnewmotion.domain.room.AppDatabase
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,7 +18,7 @@ class MainHomeViewModel : ViewModel() {
     lateinit var apiService: ApiService
 
     @Inject
-    lateinit var cardDetailedInfoDB: CardDetailedInfoDB
+    lateinit var appDatabase: AppDatabase
 
 
     private val compositeDisposable = CompositeDisposable()
@@ -47,13 +47,13 @@ class MainHomeViewModel : ViewModel() {
 
     private fun loadCardDetails() {
 
-        compositeDisposable.add(apiService.loadCardDetails().subscribe({
+        compositeDisposable.add(apiService.getCardList().subscribe({
 
             isSuccess.value = true
 
             viewModelScope.launch {
-                cardDetailedInfoDB.getCardDetailedInfoDao().upsert(it.data!!)
-                dataCardDetails.postValue(cardDetailedInfoDB.getCardDetailedInfoDao().getAll())
+                appDatabase.cardsDao().insert(it.data!!)
+                dataCardDetails.postValue(appDatabase.cardsDao().getAll())
             }
 
         }, {

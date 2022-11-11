@@ -1,16 +1,16 @@
-package com.example.myapplicationnewmotion.room
+package com.example.myapplicationnewmotion.domain.room.dao
 
 import androidx.room.*
 import androidx.room.Dao
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 
 @Dao
-interface Dao {
+interface CardDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun upsert(dataCardDetailsInside: List<DataCardDetailsInside>)
+    suspend fun insert(dataCardDetailsInside: List<DataCardDetailsInside>)
 
-    @Query("SELECT * FROM card_detailed_info_inside")
+    @Query("SELECT * FROM cards")
     suspend fun getAll(): List<DataCardDetailsInside>
 
     @Delete

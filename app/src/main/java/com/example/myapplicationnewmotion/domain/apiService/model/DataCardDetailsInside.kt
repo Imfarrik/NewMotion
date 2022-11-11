@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "card_detailed_info_inside")
+@Entity(tableName = "cards")
 data class DataCardDetailsInside(
 
     @ColumnInfo(name = "card_account")

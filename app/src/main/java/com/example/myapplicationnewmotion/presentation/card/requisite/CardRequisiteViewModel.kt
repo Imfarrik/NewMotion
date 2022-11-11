@@ -29,7 +29,7 @@ class CardRequisiteViewModel : ViewModel() {
     // HTTP
 
     private fun loadCardDetails() {
-        compositeDisposable.add(apiService.loadCardDetails().subscribe({
+        compositeDisposable.add(apiService.getCardList().subscribe({
             dataCardDetails.value = it.data!!
         }, {
             error.value = "Ошибка на стороне сервера"

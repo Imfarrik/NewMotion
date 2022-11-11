@@ -17,8 +17,8 @@ class ApiServiceImpl(private val bankApi: BankApi) : ApiService {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun loadCardDetails(): Observable<DataCardDetails> {
-        return bankApi.getCardsVal()
+    override fun getCardList(): Observable<DataCardDetails> {
+        return bankApi.getCardList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }

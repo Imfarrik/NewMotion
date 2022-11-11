@@ -10,7 +10,7 @@ interface ApiService {
 
     fun auth(password: String, login: String): Single<GetToken>
 
-    fun loadCardDetails(): Observable<DataCardDetails>
+    fun getCardList(): Observable<DataCardDetails>
 
     fun upDateCardVal(id_val: Map<String, Any>): Observable<DataCardDetailsInside>
 

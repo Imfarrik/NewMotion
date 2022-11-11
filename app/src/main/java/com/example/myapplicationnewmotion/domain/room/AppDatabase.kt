@@ -1,16 +1,17 @@
-package com.example.myapplicationnewmotion.room
+package com.example.myapplicationnewmotion.domain.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
+import com.example.myapplicationnewmotion.domain.room.dao.CardDao
 
 
 @Database(
     entities = [DataCardDetailsInside::class],
     version = 1
 )
-abstract class CardDetailedInfoDB : RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun getCardDetailedInfoDao(): Dao
+    abstract fun cardsDao(): CardDao
 
 }
