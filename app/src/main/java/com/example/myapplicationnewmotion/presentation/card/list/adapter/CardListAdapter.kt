@@ -3,11 +3,11 @@ package com.example.myapplicationnewmotion.presentation.cardList.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.databinding.RecycleItemCardInfoBinding
 
 class CardListAdapter(
-    private val value: List<Data>, private val listener: (Data, Int) -> Unit
+    private val value: List<DataCardDetailsInside>, private val listener: (DataCardDetailsInside, Int) -> Unit
 ) : RecyclerView.Adapter<CardListAdapter.MyViewHolder>() {
 
 
@@ -35,7 +35,7 @@ class CardListAdapter(
         val balance = binding.cardBalance
         val disc = binding.testIdText
 
-        fun initView(item: Data, position: Int) {
+        fun initView(item: DataCardDetailsInside, position: Int) {
             itemView.setOnClickListener {
                 listener(item, position)
             }

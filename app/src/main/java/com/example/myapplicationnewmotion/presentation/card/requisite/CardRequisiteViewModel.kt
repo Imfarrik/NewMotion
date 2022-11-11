@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class CardRequisiteViewModel : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
 
-    private val dataCardDetails = MutableLiveData<List<Data>>()
+    private val dataCardDetails = MutableLiveData<List<DataCardDetailsInside>>()
     val dataCardDetailsLiveData = dataCardDetails
 
     private val error = MutableLiveData<String>()

@@ -3,19 +3,19 @@ package com.example.myapplicationnewmotion.presentation.card.info.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.databinding.RecycleItemForViewPagerBinding
 
 class CardInfoAdapter(
-    private val listData: List<Data>,
-    val listener: (List<Data>, Data, Int) -> Unit
+    private val listData: List<DataCardDetailsInside>,
+    val listener: (List<DataCardDetailsInside>, DataCardDetailsInside, Int) -> Unit
 ) :
     RecyclerView.Adapter<CardInfoAdapter.PagerHolder>() {
 
     inner class PagerHolder(val binding: RecycleItemForViewPagerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun init(listData: List<Data>, item: Data, position: Int) {
+        fun init(listData: List<DataCardDetailsInside>, item: DataCardDetailsInside, position: Int) {
             itemView.setOnClickListener {
                 listener(listData, item, position)
             }

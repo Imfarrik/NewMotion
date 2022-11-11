@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myapplicationnewmotion.databinding.FragmentCardOptionsBinding
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.presentation.Navigator
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.gson.Gson
@@ -38,7 +38,7 @@ class CardActionDialogFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun initView(cardData: Data, arg: String, argPos: Int) = with(binding) {
+    private fun initView(cardData: DataCardDetailsInside, arg: String, argPos: Int) = with(binding) {
         cardNumber.setOnClickListener {
             toast(cardData.cardNumber!!)
         }
@@ -65,8 +65,8 @@ class CardActionDialogFragment : BottomSheetDialogFragment() {
 
     }
 
-    private fun getBundleArrayData(arg: String): List<Data> {
-        val listType = object : TypeToken<List<Data?>?>() {}.type
+    private fun getBundleArrayData(arg: String): List<DataCardDetailsInside> {
+        val listType = object : TypeToken<List<DataCardDetailsInside?>?>() {}.type
         return Gson().fromJson(arg, listType)
     }
 

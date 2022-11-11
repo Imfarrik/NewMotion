@@ -1,6 +1,6 @@
 package com.example.myapplicationnewmotion.domain.apiService
 
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetails
 import com.example.myapplicationnewmotion.domain.apiService.model.GetToken
 import io.reactivex.rxjava3.core.Observable
@@ -12,7 +12,7 @@ interface ApiService {
 
     fun loadCardDetails(): Observable<DataCardDetails>
 
-    fun upDateCardVal(id_val: Map<String, Any>): Observable<Data>
+    fun upDateCardVal(id_val: Map<String, Any>): Observable<DataCardDetailsInside>
 
-    fun removeCard(id: Int): Single<Data>
+    fun removeCard(id: Int): Single<DataCardDetailsInside>
 }

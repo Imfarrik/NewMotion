@@ -45,7 +45,7 @@ class MainHomeFragment : Fragment() {
 
     private fun initLiveDataObserver() = with(binding) {
         viewModel.dataCardDetailsLiveData.observe(viewLifecycleOwner) {
-            myAdapter?.setCardList(it.data ?: listOf())
+            myAdapter?.setCardList(it ?: listOf())
         }
 
         viewModel.isSuccessLiveData.observe(viewLifecycleOwner) {

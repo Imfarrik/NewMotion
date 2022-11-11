@@ -4,15 +4,15 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.databinding.RecycleItemBinding
 
 class CardListMainAdapter(
-    private val listener: (List<Data>, Data, Int) -> Unit
+    private val listener: (List<DataCardDetailsInside>, DataCardDetailsInside, Int) -> Unit
 ) :
     RecyclerView.Adapter<CardListMainAdapter.MyViewHolder>() {
 
-    private var cardList = listOf<Data>()
+    private var cardList = listOf<DataCardDetailsInside>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = RecycleItemBinding.inflate(LayoutInflater.from(parent.context))
@@ -27,19 +27,19 @@ class CardListMainAdapter(
     override fun getItemCount(): Int = cardList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setCardList(data: List<Data>) {
+    fun setCardList(data: List<DataCardDetailsInside>) {
         this.cardList = data
         notifyDataSetChanged()
     }
 
-    fun returnCardList(): List<Data> {
+    fun returnCardList(): List<DataCardDetailsInside> {
         return cardList
     }
 
     inner class MyViewHolder(val binding: RecycleItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun initView(listData: List<Data>, item: Data, position: Int) {
+        fun initView(listData: List<DataCardDetailsInside>, item: DataCardDetailsInside, position: Int) {
             itemView.setOnClickListener {
                 listener(listData, item, position)
 

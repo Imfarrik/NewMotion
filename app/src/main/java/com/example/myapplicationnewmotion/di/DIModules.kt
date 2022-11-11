@@ -1,11 +1,13 @@
 package com.example.myapplicationnewmotion.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import com.example.myapplicationnewmotion.domain.apiService.BankApi
 import com.example.myapplicationnewmotion.domain.apiService.HeaderInterceptor
 import com.example.myapplicationnewmotion.domain.shared_pref.SharedPreferencesManager
+import com.example.myapplicationnewmotion.room.CardDetailedInfoDB
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -30,6 +32,11 @@ class DomainModule {
     @Provides
     fun providerSharedPreferencesManager(context: Context): SharedPreferencesManager {
         return SharedPreferencesManager(context)
+    }
+
+    @Provides
+    fun providerDataCardDetailedInfoBD(context: Context): CardDetailedInfoDB {
+        return Room.databaseBuilder(context, CardDetailedInfoDB::class.java, "card_detailed_info_inside").build()
     }
 
     // DataBaseManager, CacheManager, FileManager & etc.

@@ -1,6 +1,6 @@
 package com.example.myapplicationnewmotion.domain.apiService
 
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetails
 import com.example.myapplicationnewmotion.domain.apiService.model.GetToken
 import com.example.myapplicationnewmotion.domain.apiService.model.SignIn
@@ -23,13 +23,13 @@ class ApiServiceImpl(private val bankApi: BankApi) : ApiService {
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun upDateCardVal(id_val: Map<String, Any>): Observable<Data> {
+    override fun upDateCardVal(id_val: Map<String, Any>): Observable<DataCardDetailsInside> {
         return bankApi.updateCardsVal(id_val)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
-    override fun removeCard(id: Int): Single<Data> {
+    override fun removeCard(id: Int): Single<DataCardDetailsInside> {
         return bankApi.removeCard(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

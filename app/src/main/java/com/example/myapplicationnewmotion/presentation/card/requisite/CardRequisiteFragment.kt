@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.myapplicationnewmotion.databinding.FragmentBankAccountDetailsBinding
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.presentation.Navigator
 
 class CardRequisiteFragment : Fragment() {
@@ -39,7 +39,7 @@ class CardRequisiteFragment : Fragment() {
         }
     }
 
-    private fun initView(data: List<Data>, pos: Int) = with(binding) {
+    private fun initView(data: List<DataCardDetailsInside>, pos: Int) = with(binding) {
         cardOwnerName.text = data[pos].embossedName
         mfo.text = data[pos].filialCode
         longAccountNumber.text = data[pos].cardAccount

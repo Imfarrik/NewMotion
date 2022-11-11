@@ -1,6 +1,6 @@
 package com.example.myapplicationnewmotion.domain.apiService.model
 
-data class DataX(
+data class GetTokenInside(
     val accessToken: String,
     val refreshToken: String
 )

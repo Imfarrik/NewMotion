@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.myapplicationnewmotion.domain.apiService.model.Data
 import com.example.myapplicationnewmotion.databinding.FragmentViewPagerBinding
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
+import com.example.myapplicationnewmotion.domain.apiService.model.LocalDB
 import com.example.myapplicationnewmotion.presentation.Navigator
 import com.example.myapplicationnewmotion.presentation.card.info.adapter.CardInfoAdapter
 import com.example.myapplicationnewmotion.presentation.custom_component.TaskPageTransformer
@@ -33,17 +35,18 @@ class CardInfoFragment : Fragment() {
         val arg: String? = arguments?.getString(Navigator.MY_ARG)
         val argPos: Int? = arguments?.getInt(Navigator.MY_ARG_POS)
         val argData = jsonToListConverter(arg!!)
+        val liveData = LocalDB().dataCardDetailsLiveData
 
-        init(arg, argPos!!, argData)
+        init(arg, argPos!!, liveData)
 
     }
 
-    private fun jsonToListConverter(arg: String): List<Data> {
-        val listType = object : TypeToken<List<Data?>?>() {}.type
+    private fun jsonToListConverter(arg: String): List<DataCardDetailsInside> {
+        val listType = object : TypeToken<List<DataCardDetailsInside?>?>() {}.type
         return Gson().fromJson(arg, listType)
     }
 
-    private fun init(argListBundle: String, argPosInt: Int, argDataList: List<Data>) =
+    private fun init(argListBundle: String, argPosInt: Int, argDataList: LiveData<List<DataCardDetailsInside>>) =
         with(binding) {
 
             val bankName = bankName
@@ -56,28 +59,35 @@ class CardInfoFragment : Fragment() {
             val backBtn = backButton
             val btnOperations = btnOperations
 
-            viewPager2.let {
-                it.offscreenPageLimit = 3
-                it.setPageTransformer(TaskPageTransformer(0))
-                (it.getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-                it.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-                    override fun onPageSelected(position: Int) {
-                        super.onPageSelected(position)
+            viewPager2.let { it ->
+                argDataList.observe(viewLifecycleOwner) { data ->
+                    it.offscreenPageLimit = 3
+                    it.setPageTransformer(TaskPageTransformer(0))
+                    (it.getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+                    it.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+                        override fun onPageSelected(position: Int) {
+                            super.onPageSelected(position)
 
-                        bankName.text = argDataList[position].cardName
-                        cardNumber.text = argDataList[position].cardNumber
-                        cardDate.text = argDataList[position].dateExpiry
-                        cardOwnerName.text = argDataList[position].embossedName
+                            bankName.text = data[position].cardName
+                            cardNumber.text = data[position].cardNumber
+                            cardDate.text = data[position].dateExpiry
+                            cardOwnerName.text = data[position].embossedName
 
-                        btnSettings.setOnClickListener {
-                            navigateToCardOptionsFragment(argListBundle, position)
+//                        bankName.text = argDataList[position].cardName
+//                        cardNumber.text = argDataList[position].cardNumber
+//                        cardDate.text = argDataList[position].dateExpiry
+//                        cardOwnerName.text = argDataList[position].embossedName
+
+                            btnSettings.setOnClickListener {
+                                navigateToCardOptionsFragment(argListBundle, position)
+                            }
+                            btnLimits.setOnClickListener {
+                                navigateToCardListFragment()
+                            }
                         }
-                        btnLimits.setOnClickListener {
-                            navigateToCardListFragment()
-                        }
-                    }
-                })
-                it.adapter = CardInfoAdapter(argDataList) { _, _, _ -> }
+                    })
+                    it.adapter = CardInfoAdapter(data) { _, _, _ -> }
+                }
             }
 
             backBtn.setOnClickListener {
