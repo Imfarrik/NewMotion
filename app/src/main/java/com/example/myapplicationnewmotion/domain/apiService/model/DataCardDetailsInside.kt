@@ -51,5 +51,8 @@ data class DataCardDetailsInside(
     val stateCode: String?,
 
     @ColumnInfo(name = "state_name")
-    val stateName: String?
+    val stateName: String?,
+
+    @ColumnInfo(name = "currency")
+    val currency: String?
 )

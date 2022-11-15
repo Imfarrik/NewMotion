@@ -20,7 +20,6 @@ class MainHomeViewModel : ViewModel() {
     @Inject
     lateinit var appDatabase: AppDatabase
 
-
     private val compositeDisposable = CompositeDisposable()
 
     private val isSuccess = MutableLiveData<Boolean>()

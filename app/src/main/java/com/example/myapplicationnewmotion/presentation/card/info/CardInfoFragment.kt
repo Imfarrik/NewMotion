@@ -8,17 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.databinding.FragmentViewPagerBinding
+import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
+import com.example.myapplicationnewmotion.domain.room.AppDatabase
 import com.example.myapplicationnewmotion.presentation.Navigator
 import com.example.myapplicationnewmotion.presentation.card.info.adapter.CardInfoAdapter
 import com.example.myapplicationnewmotion.presentation.custom_component.TaskPageTransformer
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import javax.inject.Inject
 
 class CardInfoFragment : Fragment() {
 
     private lateinit var binding: FragmentViewPagerBinding
+
+    @Inject
+    lateinit var cardDetailedInfoDB: AppDatabase
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentViewPagerBinding.inflate(inflater, container, false)
@@ -37,6 +42,7 @@ class CardInfoFragment : Fragment() {
         init(arg, argPos!!, argData)
 
     }
+
 
     private fun jsonToListConverter(arg: String): List<DataCardDetailsInside> {
         val listType = object : TypeToken<List<DataCardDetailsInside?>?>() {}.type

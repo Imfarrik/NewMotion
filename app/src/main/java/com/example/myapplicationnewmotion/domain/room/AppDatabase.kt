@@ -8,7 +8,7 @@ import com.example.myapplicationnewmotion.domain.room.dao.CardDao
 
 @Database(
     entities = [DataCardDetailsInside::class],
-    version = 1
+    version = 2
 )
 abstract class AppDatabase : RoomDatabase() {
 
