@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -33,12 +33,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Узнaть номер карты"
         android:clickable="true"
+        android:focusable="true"
+        android:text="Узнaть номер карты"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <View
         android:id="@+id/view1"
@@ -54,12 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Реквизиты"
         android:clickable="true"
+        android:focusable="true"
+        android:text="Реквизиты"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view1"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view1" />
 
     <View
         android:id="@+id/view2"
@@ -75,12 +75,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Редактировать карту"
         android:clickable="true"
+        android:focusable="true"
+        android:text="Редактировать карту"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view2" />
 
     <View
         android:id="@+id/view3"
@@ -97,11 +97,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:clickable="true"
+        android:focusable="true"
         android:text="Заблокировать карту"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
     <View
         android:id="@+id/view4"
@@ -116,13 +116,13 @@
         android:id="@+id/smsInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
         android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:text="Сменить номер СМС информирования"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view4" />
 
     <View
         android:id="@+id/view5"
@@ -135,15 +135,15 @@
 
     <TextView
         android:id="@+id/deleteCard"
-        android:clickable="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:clickable="true"
+        android:focusable="true"
         android:text="Удалить карту"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view5"
-        android:focusable="true" />
+        app:layout_constraintTop_toBottomOf="@+id/view5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

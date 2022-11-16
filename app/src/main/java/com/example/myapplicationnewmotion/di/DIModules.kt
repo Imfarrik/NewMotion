@@ -9,6 +9,8 @@ import com.example.myapplicationnewmotion.domain.apiService.HeaderInterceptor
 import com.example.myapplicationnewmotion.domain.shared_pref.SharedPreferencesManager
 import com.example.myapplicationnewmotion.domain.room.AppDatabase
 import com.example.myapplicationnewmotion.domain.room.MIGRATION_1_2
+import com.example.myapplicationnewmotion.domain.room.MIGRATION_2_3
+import com.example.myapplicationnewmotion.domain.room.MIGRATION_3_4
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -39,6 +41,8 @@ class DomainModule {
     fun providerDataCardDetailedInfoBD(context: Context): AppDatabase {
         return Room.databaseBuilder(context, AppDatabase::class.java, "new_motion_database")
             .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_2_3)
+            .addMigrations(MIGRATION_3_4)
             .build()
     }
 

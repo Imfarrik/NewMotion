@@ -3,6 +3,8 @@ package com.example.myapplicationnewmotion.domain.room.dao
 import androidx.room.*
 import androidx.room.Dao
 import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
+import com.example.myapplicationnewmotion.domain.room.Remove
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CardDao {
@@ -11,10 +13,10 @@ interface CardDao {
     suspend fun insert(dataCardDetailsInside: List<DataCardDetailsInside>)
 
     @Query("SELECT * FROM cards")
-    suspend fun getAll(): List<DataCardDetailsInside>
+    fun getAll(): Flow<List<DataCardDetailsInside>>
 
-    @Delete
-    suspend fun deleteCard(dataCardDetailsInside: DataCardDetailsInside)
+    @Delete(entity = DataCardDetailsInside::class)
+    suspend fun removeCard(remove: Remove)
 
     @Update
     suspend fun updateCard(dataCardDetailsInside: DataCardDetailsInside)

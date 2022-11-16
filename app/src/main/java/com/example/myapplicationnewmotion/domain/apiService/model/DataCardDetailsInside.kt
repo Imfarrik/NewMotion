@@ -1,10 +1,15 @@
 package com.example.myapplicationnewmotion.domain.apiService.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.Relation
+import androidx.room.TypeConverters
+import com.example.myapplicationnewmotion.domain.room.Converter
 
 @Entity(tableName = "cards")
+@TypeConverters(Converter::class)
 data class DataCardDetailsInside(
 
     @ColumnInfo(name = "card_account")
@@ -54,5 +59,12 @@ data class DataCardDetailsInside(
     val stateName: String?,
 
     @ColumnInfo(name = "currency")
-    val currency: String?
+    val currency: String?,
+
+    @ColumnInfo(name = "is_multi_currency")
+    val isMultiCurrency: Boolean,
+
+    @ColumnInfo(name = "balance_list")
+    val balanceList: List<BalanceList>
+
 )

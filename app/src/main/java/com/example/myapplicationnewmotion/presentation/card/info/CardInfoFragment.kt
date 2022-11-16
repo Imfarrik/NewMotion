@@ -43,7 +43,6 @@ class CardInfoFragment : Fragment() {
 
     }
 
-
     private fun jsonToListConverter(arg: String): List<DataCardDetailsInside> {
         val listType = object : TypeToken<List<DataCardDetailsInside?>?>() {}.type
         return Gson().fromJson(arg, listType)

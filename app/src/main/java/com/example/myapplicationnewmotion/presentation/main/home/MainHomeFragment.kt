@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myapplicationnewmotion.databinding.FragmentMainBinding
 import com.example.myapplicationnewmotion.presentation.Navigator
 import com.google.gson.Gson
+import kotlinx.coroutines.flow.collect
 import com.example.myapplicationnewmotion.presentation.main.adapter.CardListMainAdapter as MyAdapter1
 
 class MainHomeFragment : Fragment() {
@@ -44,9 +46,16 @@ class MainHomeFragment : Fragment() {
     }
 
     private fun initLiveDataObserver() = with(binding) {
-        viewModel.dataCardDetailsLiveData.observe(viewLifecycleOwner) {
-            myAdapter?.setCardList(it ?: listOf())
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.cardData.collect {
+                myAdapter?.setCardList(it)
+            }
         }
+
+//        viewModel.dataCardDetailsLiveData.observe(viewLifecycleOwner) {
+//            myAdapter?.setCardList(it ?: listOf())
+//        }
 
         viewModel.isSuccessLiveData.observe(viewLifecycleOwner) {
             if (!it) setToast()

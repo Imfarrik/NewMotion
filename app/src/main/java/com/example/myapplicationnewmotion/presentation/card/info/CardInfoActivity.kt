@@ -27,8 +27,5 @@ class CardInfoActivity : AppCompatActivity() {
         navController
             .setGraph(R.navigation.card_details_graph, intent.extras)
 
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-
     }
 }

@@ -2,15 +2,22 @@ package com.example.myapplicationnewmotion.presentation.card.info.dialog
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
+import com.example.myapplicationnewmotion.domain.room.AppDatabase
+import com.example.myapplicationnewmotion.domain.room.Remove
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CardActionDialogViewModel : ViewModel() {
 
     @Inject
     lateinit var apiService: ApiService
+
+    @Inject
+    lateinit var appDatabase: AppDatabase
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -56,6 +63,10 @@ class CardActionDialogViewModel : ViewModel() {
         compositeDisposable.add(apiService.removeCard(id).subscribe({
 
             text.value = "Карта удалена"
+
+            viewModelScope.launch {
+                appDatabase.cardsDao().removeCard(Remove(id))
+            }
 
         }, {
 
