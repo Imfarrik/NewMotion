@@ -7,13 +7,13 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "balance_list")
 data class BalanceList(
 
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "_id")
+    @PrimaryKey
+    @ColumnInfo(name = "card_id")
     val id: Int?,
 
-    @ColumnInfo(name = "_balance")
+    @ColumnInfo(name = "balance")
     val balance: Int?,
 
-    @ColumnInfo(name = "_currency")
-    val currency: String?,
+    @ColumnInfo(name = "currency")
+    val currency: String?
 )

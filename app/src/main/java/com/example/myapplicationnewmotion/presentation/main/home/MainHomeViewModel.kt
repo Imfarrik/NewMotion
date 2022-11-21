@@ -1,12 +1,10 @@
 package com.example.myapplicationnewmotion.presentation.main.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
-import com.example.myapplicationnewmotion.domain.apiService.model.DataCardDetailsInside
 import com.example.myapplicationnewmotion.domain.room.AppDatabase
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.flow.SharingStarted
