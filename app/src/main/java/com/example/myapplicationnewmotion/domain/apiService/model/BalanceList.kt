@@ -1,14 +1,21 @@
 package com.example.myapplicationnewmotion.domain.apiService.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 
-@Entity(tableName = "balance_list")
+@Entity(tableName = "balance_list", foreignKeys = [ForeignKey(
+    entity = DataCardDetailsInside::class,
+    parentColumns = ["card_id"],
+    childColumns = ["id"],
+    onDelete = ForeignKey.CASCADE
+)])
 data class BalanceList(
 
-    @PrimaryKey
     @ColumnInfo(name = "card_id")
+    val card_id: Int?,
+
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     val id: Int?,
 
     @ColumnInfo(name = "balance")

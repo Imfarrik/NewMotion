@@ -7,6 +7,7 @@ import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.room.AppDatabase
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -43,6 +44,7 @@ class MainHomeViewModel : ViewModel() {
         initialValue = emptyList()
     )
 
+
     override fun onCleared() {
         super.onCleared()
         compositeDisposable.dispose()
@@ -57,8 +59,19 @@ class MainHomeViewModel : ViewModel() {
             isSuccess.value = true
 
             viewModelScope.launch {
+
                 appDatabase.cardsDao().insert(it.data!!)
-//                dataCardDetails.postValue(appDatabase.cardsDao().getAll())
+
+//                for (i in it.data.indices) {
+//                    if (it.data[i].isMultiCurrency!!) {
+//
+//                        appDatabase.cardsDao()
+//                            .insertBalanceList(
+//                                it.data[i].balanceList
+//                            )
+//
+//                    }
+//                }
             }
 
         }, {

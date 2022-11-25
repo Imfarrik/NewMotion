@@ -6,10 +6,7 @@ import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.apiService.ApiServiceImpl
 import com.example.myapplicationnewmotion.domain.apiService.BankApi
 import com.example.myapplicationnewmotion.domain.apiService.HeaderInterceptor
-import com.example.myapplicationnewmotion.domain.room.AppDatabase
-import com.example.myapplicationnewmotion.domain.room.MIGRATION_1_2
-import com.example.myapplicationnewmotion.domain.room.MIGRATION_2_3
-import com.example.myapplicationnewmotion.domain.room.MIGRATION_3_4
+import com.example.myapplicationnewmotion.domain.room.*
 import com.example.myapplicationnewmotion.domain.shared_pref.SharedPreferencesManager
 import dagger.Module
 import dagger.Provides
