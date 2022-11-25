@@ -42,8 +42,7 @@ data class DataCardDetailsInside(
 
     @ColumnInfo(name = "is_multi_currency") val isMultiCurrency: Boolean? = null,
 
+    @Ignore
+    val balanceList: List<BalanceList>
+
     )
-{
-//    @Ignore
-//    lateinit var balanceList: List<BalanceList>
-}
