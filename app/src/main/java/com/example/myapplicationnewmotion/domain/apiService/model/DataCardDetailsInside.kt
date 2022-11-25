@@ -8,41 +8,58 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cards")
 data class DataCardDetailsInside(
 
-    @ColumnInfo(name = "card_account") val cardAccount: String? = null,
+    @ColumnInfo(name = "card_account")
+    var cardAccount: String? = null,
 
-    @ColumnInfo(name = "card_balance") val cardBalance: Int? = null,
+    @ColumnInfo(name = "card_balance")
+    var cardBalance: Int? = null,
 
-    @PrimaryKey @ColumnInfo(name = "card_id") val cardId: Int? = null,
+    @PrimaryKey @ColumnInfo(name = "card_id")
+    var cardId: Int? = null,
 
-    @ColumnInfo(name = "card_name") val cardName: String? = null,
+    @ColumnInfo(name = "card_name")
+    var cardName: String? = null,
 
-    @ColumnInfo(name = "card_number") val cardNumber: String? = null,
+    @ColumnInfo(name = "card_number")
+    var cardNumber: String? = null,
 
-    @ColumnInfo(name = "card_state_changed_date") val cardStateChangedDate: String? = null,
+    @ColumnInfo(name = "card_state_changed_date")
+    var cardStateChangedDate: String? = null,
 
-    @ColumnInfo(name = "card_contract_type_group_id") val contractTypeGroupId: Int? = null,
+    @ColumnInfo(name = "card_contract_type_group_id")
+    var contractTypeGroupId: Int? = null,
 
-    @ColumnInfo(name = "card_contract_type_group_name") val contractTypeGroupName: String? = null,
+    @ColumnInfo(name = "card_contract_type_group_name")
+    var contractTypeGroupName: String? = null,
 
-    @ColumnInfo(name = "data_expire") val dateExpiry: String? = null,
+    @ColumnInfo(name = "data_expire")
+    var dateExpiry: String? = null,
 
-    @ColumnInfo(name = "embossed_name") val embossedName: String? = null,
+    @ColumnInfo(name = "embossed_name")
+    var embossedName: String? = null,
 
-    @ColumnInfo(name = "filial_code") val filialCode: String? = null,
+    @ColumnInfo(name = "filial_code")
+    var filialCode: String? = null,
 
-    @ColumnInfo(name = "sms_service_state") val smsServiceState: Int? = null,
+    @ColumnInfo(name = "sms_service_state")
+    var smsServiceState: Int? = null,
 
-    @ColumnInfo(name = "sms_service_state_name") val smsServiceStateName: String? = null,
+    @ColumnInfo(name = "sms_service_state_name")
+    var smsServiceStateName: String? = null,
 
-    @ColumnInfo(name = "state_code") val stateCode: String? = null,
+    @ColumnInfo(name = "state_code")
+    var stateCode: String? = null,
 
-    @ColumnInfo(name = "state_name") val stateName: String? = null,
+    @ColumnInfo(name = "state_name")
+    var stateName: String? = null,
 
-    @ColumnInfo(name = "currency") val currency: String? = null,
+    @ColumnInfo(name = "currency")
+    var currency: String? = null,
 
-    @ColumnInfo(name = "is_multi_currency") val isMultiCurrency: Boolean? = null,
+    @ColumnInfo(name = "is_multi_currency")
+    var isMultiCurrency: Boolean? = null,
 
     @Ignore
-    val balanceList: List<BalanceList>
+    var balanceList: List<BalanceList>? = null
 
     )
