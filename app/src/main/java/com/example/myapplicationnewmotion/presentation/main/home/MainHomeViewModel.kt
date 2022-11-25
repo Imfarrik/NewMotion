@@ -58,9 +58,7 @@ class MainHomeViewModel : ViewModel() {
             isSuccess.value = true
 
             viewModelScope.launch {
-
                 appDatabase.cardsDao().insert(it.data!!)
-
             }
 
             it.data!!.forEach { cards ->

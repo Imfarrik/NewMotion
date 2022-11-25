@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.myapplicationnewmotion.App
 import com.example.myapplicationnewmotion.domain.apiService.ApiService
 import com.example.myapplicationnewmotion.domain.room.AppDatabase
-import com.example.myapplicationnewmotion.domain.room.Remove
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -65,7 +64,7 @@ class CardActionDialogViewModel : ViewModel() {
             text.value = "Карта удалена"
 
             viewModelScope.launch {
-                appDatabase.cardsDao().removeCard(Remove(id))
+                appDatabase.cardsDao().removeCard()
             }
 
         }, {
