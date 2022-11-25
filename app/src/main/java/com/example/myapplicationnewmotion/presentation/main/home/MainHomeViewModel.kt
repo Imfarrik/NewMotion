@@ -61,9 +61,11 @@ class MainHomeViewModel : ViewModel() {
                 appDatabase.cardsDao().insert(it.data!!)
             }
 
-            it.data!!.forEach { cards ->
-                if (cards.isMultiCurrency!!) {
-                    appDatabase.cardsDao().insertBalanceList(cards.balanceList!!)
+            viewModelScope.launch {
+                it.data!!.forEach { cards ->
+                    if (cards.isMultiCurrency!!) {
+                        appDatabase.cardsDao().insertBalanceList(cards.balanceList!!)
+                    }
                 }
             }
 

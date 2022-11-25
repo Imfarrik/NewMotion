@@ -67,6 +67,7 @@ class CardActionDialogViewModel : ViewModel() {
                 appDatabase.cardsDao().removeCard()
             }
 
+
         }, {
 
             text.value = "Ошибка на стороне сервера"

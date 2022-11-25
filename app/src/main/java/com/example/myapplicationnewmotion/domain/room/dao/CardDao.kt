@@ -21,5 +21,5 @@ interface CardDao {
     suspend fun updateCard(dataCardDetailsInside: DataCardDetailsInside)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertBalanceList(balanceList: List<BalanceList>)
+    suspend fun insertBalanceList(balanceList: List<BalanceList>)
 }

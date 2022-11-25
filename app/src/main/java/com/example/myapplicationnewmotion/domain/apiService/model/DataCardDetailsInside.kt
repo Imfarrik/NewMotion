@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "cards")
 data class DataCardDetailsInside(
@@ -57,6 +58,7 @@ data class DataCardDetailsInside(
     var currency: String? = null,
 
     @ColumnInfo(name = "is_multi_currency")
+    @SerializedName("isMulticurrency")
     var isMultiCurrency: Boolean? = null,
 
     @Ignore
