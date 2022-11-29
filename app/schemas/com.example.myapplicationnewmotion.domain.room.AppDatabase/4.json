@@ -1,0 +1,162 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 4,
+    "identityHash": "6dd8623655ebcafba420558c2409fee3",
+    "entities": [
+      {
+        "tableName": "cards",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`card_account` TEXT, `card_balance` INTEGER, `card_id` INTEGER, `card_name` TEXT, `card_number` TEXT, `card_state_changed_date` TEXT, `card_contract_type_group_id` INTEGER, `card_contract_type_group_name` TEXT, `data_expire` TEXT, `embossed_name` TEXT, `filial_code` TEXT, `sms_service_state` INTEGER, `sms_service_state_name` TEXT, `state_code` TEXT, `state_name` TEXT, `currency` TEXT, `is_multi_currency` INTEGER, PRIMARY KEY(`card_id`))",
+        "fields": [
+          {
+            "fieldPath": "cardAccount",
+            "columnName": "card_account",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardBalance",
+            "columnName": "card_balance",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardId",
+            "columnName": "card_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardName",
+            "columnName": "card_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardNumber",
+            "columnName": "card_number",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cardStateChangedDate",
+            "columnName": "card_state_changed_date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contractTypeGroupId",
+            "columnName": "card_contract_type_group_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "contractTypeGroupName",
+            "columnName": "card_contract_type_group_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateExpiry",
+            "columnName": "data_expire",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "embossedName",
+            "columnName": "embossed_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "filialCode",
+            "columnName": "filial_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smsServiceState",
+            "columnName": "sms_service_state",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "smsServiceStateName",
+            "columnName": "sms_service_state_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateCode",
+            "columnName": "state_code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "stateName",
+            "columnName": "state_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currency",
+            "columnName": "currency",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isMultiCurrency",
+            "columnName": "is_multi_currency",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "card_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "balance_list",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`card_id` INTEGER, `balance` INTEGER, `currency` TEXT, PRIMARY KEY(`card_id`))",
+        "fields": [
+          {
+            "fieldPath": "card_id",
+            "columnName": "card_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "balance",
+            "columnName": "balance",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "currency",
+            "columnName": "currency",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "card_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6dd8623655ebcafba420558c2409fee3')"
+    ]
+  }
+}
